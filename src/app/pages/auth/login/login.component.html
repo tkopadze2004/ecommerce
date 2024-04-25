@@ -1,11 +1,12 @@
 <app-auth-head title="Login" />
 
 <div class="cont">
-  <!-- @if(errorMessage){
+   @if(errorMessage){
   <app-alert type="error" [message]="errorMessage" />
-  } @if(successMessagge){
+  }
+  @if(successMessagge){
   <app-alert type="success" [message]="successMessagge" />
-  } -->
+  }
   <form [formGroup]="form">
     <app-input
       error="email is required"

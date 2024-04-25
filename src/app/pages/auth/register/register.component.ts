@@ -13,7 +13,8 @@ import { RouterLink } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { InputComponent } from '../../../input/input.component';
 import { AuthService } from '../../../services/auth.service';
-import { RegisterPayload } from '../../../core/interfaces.ts/auth-payload';
+import { AuthPayload } from '../../../core/interfaces.ts/auth-payload';
+import { AuthFacade } from '../../../facades';
 
 @Component({
   selector: 'app-register',
@@ -35,8 +36,8 @@ export class RegisterComponent implements OnDestroy {
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     password: new FormControl<string>('', Validators.required),
   });
-  sub$=new Subject()
-  authService=inject(AuthService)
+  sub$ = new Subject();
+  authFacade = inject(AuthFacade);
 
   onSubmit() {
     this.form.markAllAsTouched();
@@ -44,23 +45,27 @@ export class RegisterComponent implements OnDestroy {
       return;
     }
 
-    const {email,password}=this.form.value as {email:string,password:string}
-email.trim()
-password.trim()
+    const { email, password } = this.form.value as {
+      email: string;
+      password: string;
+    };
+    email.trim();
+    password.trim();
 
-const payload :RegisterPayload={
-email,password
-}
+    const payload: AuthPayload = {
+      email,
+      password,
+    };
 
-    this.authService.register(payload)
-    .pipe(
-      takeUntil(this.sub$)
-    ).subscribe(res=>{
-      console.log(res);
-    })
+    this.authFacade
+      .register(payload)
+      .pipe(takeUntil(this.sub$))
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
-ngOnDestroy(): void {
-  this.sub$.next(null)
-  this.sub$.complete()
-}
+  ngOnDestroy(): void {
+    this.sub$.next(null);
+    this.sub$.complete();
+  }
 }

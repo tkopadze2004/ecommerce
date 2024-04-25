@@ -9,12 +9,13 @@ import {
 } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { ButtonComponent } from '../../../ui/button/button.component';
-import { RouterLink } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Router, RouterLink } from '@angular/router';
+import { Subject, catchError, takeUntil, throwError } from 'rxjs';
 import { InputComponent } from '../../../input/input.component';
 import { AuthService } from '../../../services/auth.service';
 import { AuthPayload } from '../../../core/interfaces.ts/auth-payload';
 import { AuthFacade } from '../../../facades';
+import { AlertComponent } from '../../../components/alert/alert.component';
 
 @Component({
   selector: 'app-register',
@@ -27,6 +28,7 @@ import { AuthFacade } from '../../../facades';
     FormsModule,
     InputComponent,
     ButtonComponent,
+    AlertComponent
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss', '../auth.style.scss'],
@@ -38,12 +40,18 @@ export class RegisterComponent implements OnDestroy {
   });
   sub$ = new Subject();
   authFacade = inject(AuthFacade);
+  router = inject(Router);
+  errorMessage: string | null = null;
+  successMessagge: string | null = null;
 
   onSubmit() {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
       return;
     }
+
+    this.errorMessage = null;
+    this.successMessagge = null;
 
     const { email, password } = this.form.value as {
       email: string;
@@ -59,9 +67,21 @@ export class RegisterComponent implements OnDestroy {
 
     this.authFacade
       .register(payload)
-      .pipe(takeUntil(this.sub$))
+      .pipe(
+        takeUntil(this.sub$),
+        catchError(({ error }) => {
+          this.errorMessage = error.error.message;
+          return throwError(() => error.error.message);
+        })
+      )
       .subscribe((res) => {
-        console.log(res);
+    if(res){
+      this.successMessagge='you are registered'
+      setTimeout(() => {
+    this.router.navigate(['/auth'])
+      }, 2000);
+    }
+
       });
   }
   ngOnDestroy(): void {

@@ -1,6 +1,12 @@
 <app-auth-head title="Sign Up" />
 
 <div class="cont">
+  @if(errorMessage){
+    <app-alert type="error" [message]="errorMessage" />
+    }
+    @if(successMessagge){
+    <app-alert type="success" [message]="successMessagge" />
+    }
   <div [formGroup]="form">
     <app-input formControlName="email" type="email" label="Email" />
 

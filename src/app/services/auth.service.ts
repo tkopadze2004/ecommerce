@@ -19,6 +19,6 @@ export class AuthService extends ApiService {
   }
 
   login(payload:AuthPayload) {
-  return this.post<AuthResponse>(`accounts:signInWithPassword?key=${this.apiKey}`,payload)
+  return this.post<AuthResponse>(`accounts:signInWithPassword?key=${this.apiKey}`,{...payload,returnSecureToken	:true})
   }
 }

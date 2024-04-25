@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    margin: 120px 0 249px;
+    gap: 16px;
+
+    > div {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: var(--font--size--14);
+      line-height: 175%;
+      color: var(--neutral-black-b500);
+      padding: 8px 24px;
+      width: 212px;
+      height: 41px;
+      &:hover {
+        border-radius: 8px;
+        color: var(--neutral-black-b900);
+        background: var(--neutral-white-w100);
+        img {
+          filter: brightness(0);
+        }
+      }
+
+      img {
+        margin-right: 10px; // Space between the icon and the text
+      }
+    }
+  }
+  .line {
+    margin: 60px 0 131px;
+    width: 1px;
+    height: 504px;
+    background: var(--neutral-white-w200);
+    transform: rotate(-180deg);
+  }
+
+  .orders{
+    margin: 64px 0  0 48px;
+  }
+}

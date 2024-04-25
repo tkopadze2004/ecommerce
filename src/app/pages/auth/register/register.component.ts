@@ -8,13 +8,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
-// import { InputComponent } from '../../../input/input.component';
 import { ButtonComponent } from '../../../ui/button/button.component';
 import { RouterLink } from '@angular/router';
-// import { authPayload } from '../../../core/interfaces.ts/auth-payload';
 import { Subject, takeUntil } from 'rxjs';
 import { InputComponent } from '../../../input/input.component';
-// import { AuthFacade } from '../../../facades/auth.facade';
+import { AuthService } from '../../../services/auth.service';
+import { RegisterPayload } from '../../../core/interfaces.ts/auth-payload';
 
 @Component({
   selector: 'app-register',
@@ -31,42 +30,37 @@ import { InputComponent } from '../../../input/input.component';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss', '../auth.style.scss'],
 })
-export class RegisterComponent  {
+export class RegisterComponent implements OnDestroy {
   form = new FormGroup({
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     password: new FormControl<string>('', Validators.required),
   });
+  sub$=new Subject()
+  authService=inject(AuthService)
 
-//   sub$ = new Subject();
-//   authFacade = inject(AuthFacade);
   onSubmit() {
-//     this.form.markAllAsTouched();
-//     if (this.form.invalid) {
-//       return;
-//     }
+    this.form.markAllAsTouched();
+    if (this.form.invalid) {
+      return;
+    }
 
-//     const { email, password } = this.form.value as {
-//       email: string;
-//       password: string;
-//     };
+    const {email,password}=this.form.value as {email:string,password:string}
+email.trim()
+password.trim()
 
-//     email.trim();
-//     password.trim();
+const payload :RegisterPayload={
+email,password
+}
 
-//     const payload: authPayload = {
-//       email,
-//       password,
-//     };
-
-//     this.authFacade
-//       .register(payload)
-//       .pipe(takeUntil(this.sub$))
-//       .subscribe((res) => {
-//         console.log(res);
-//       });
+    this.authService.register(payload)
+    .pipe(
+      takeUntil(this.sub$)
+    ).subscribe(res=>{
+      console.log(res);
+    })
   }
-//   ngOnDestroy(): void {
-//     this.sub$.next(null);
-//     this.sub$.complete();
-//   }
+ngOnDestroy(): void {
+  this.sub$.next(null)
+  this.sub$.complete()
+}
 }

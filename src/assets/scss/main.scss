@@ -1,0 +1,44 @@
+@import "./colors";
+@import "./shadows";
+@import "./spacing";
+@import "./typography";
+@import "./components/component";
+
+body,html {
+  margin: 0;
+  padding: 0;
+}
+*{
+  box-sizing: border-box;
+}
+.container{
+  width: 100%;
+  padding:  0 16px;
+  margin: 0 auto;
+max-width: 1116px;
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 16px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__brand {
+    font-family: var(--second-family);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.04em;
+    text-transform: capitalize;
+    color: var(--neutral-black-b900);
+  }
+}

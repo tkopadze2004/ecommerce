@@ -1,0 +1,27 @@
+<app-auth-head
+title="Forgot Password"/>
+
+<div class="cont">
+
+  <div class="password-recovery">
+    Please enter the email address associated with your account. We'll promptly send you a link to reset your password.
+  </div>
+  <form [formGroup]="form">
+    <app-input
+      formControlName="email"
+      type="email"
+      label="Email"
+    />
+
+
+
+    <div class="auth-button">
+      <button alte-button block  (click)="onSubmit()">Send reset link</button>
+    </div>
+  </form>
+
+<!-- <div class="more-actions">
+  Don't have an account? <a [routerLink]="['/auth/register']"  >  Sign up</a>
+</div> -->
+</div>
+{{ form.value | json }}

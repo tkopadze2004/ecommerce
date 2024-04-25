@@ -1,0 +1,30 @@
+<app-auth-head title="Login" />
+
+<div class="cont">
+  <!-- @if(errorMessage){
+  <app-alert type="error" [message]="errorMessage" />
+  } @if(successMessagge){
+  <app-alert type="success" [message]="successMessagge" />
+  } -->
+  <form [formGroup]="form">
+    <app-input
+      error="email is required"
+      formControlName="email"
+      type="email"
+      label="Email"
+    />
+    <app-input formControlName="password" type="password" label="Password" />
+    <div class="recovery">
+      <a [routerLink]="['/auth/recovery']">Forgot Password?</a>
+    </div>
+
+    <div class="auth-button">
+      <button alte-button block (click)="submit()">Sign in</button>
+    </div>
+  </form>
+
+  <div class="more-actions">
+    Don't have an account? <a [routerLink]="['/auth/register']"> Sign up</a>
+  </div>
+</div>
+{{ form.value | json }}

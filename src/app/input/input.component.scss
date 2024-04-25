@@ -1,0 +1,43 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  label {
+    line-height: 24px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 175%;
+    color: var(--neutral-black-b600);
+  }
+
+  input {
+    border: 1px solid var(--neutral-black-b100);
+    border-radius: 6px;
+    padding: 10px 15px;
+    width: 100%;
+    height: 45px;
+    outline: none;
+   
+
+    &:focus {
+      border: 1px solid var(--neutral-black-b200);
+    }
+
+    &::placeholder {
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: var(--font-size-14);
+      line-height: 175%;
+      color: var(--neutral-black-b300);
+    }
+
+
+  }
+  .error {
+    color: var(--semantic-red-r900);
+
+  }
+  // input.ng-invalid.ng-touched input {
+  //   border: 1px solid var(--semantic-red-r900);
+  // }
+}

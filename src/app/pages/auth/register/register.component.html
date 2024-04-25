@@ -1,0 +1,22 @@
+<app-auth-head title="Sign Up" />
+
+<div class="cont">
+  <div [formGroup]="form">
+    <app-input formControlName="email" type="email" label="Email" />
+
+    <app-input formControlName="password" type="password" label="Password" />
+
+    <div class="Privacy">
+      By creating an account you agree with our Terms of Service, Privacy
+      Policy,
+    </div>
+    <div class="auth-button">
+      <button alte-button block (click)="onSubmit()">Sign Up</button>
+    </div>
+  </div>
+
+  <div class="more-actions">
+    Already have an account?<a [routerLink]="['/auth']"> Log in</a>
+  </div>
+</div>
+{{ form.value | json }}

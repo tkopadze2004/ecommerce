@@ -1,0 +1,27 @@
+.recovery{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  input.ng-invalid.ng-touched{
+    border-color: red;
+  }
+  .error{
+    color: red;
+    margin-top: 5px;
+  }
+
+a{
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: var(--font-size-12);
+  line-height: 200%;
+  text-transform: capitalize;
+  color: var(--neutral-black-b600);
+  text-decoration: none;
+  &:hover{
+    color: var(--neutral-black-b900);
+    text-decoration: underline;
+  }
+}
+}

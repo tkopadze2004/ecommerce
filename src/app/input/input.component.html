@@ -1,0 +1,10 @@
+<div class="input">
+  <label>{{ label }}</label>
+  <input
+    [type]="type"
+    [(ngModel)]="value"
+    [disabled]="disabled"
+    (input)="onchange(value)"
+    (blur)="ontouched()"
+  />
+</div>

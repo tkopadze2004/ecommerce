@@ -1,0 +1,27 @@
+
+    .title {
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: var(--font-size--14);
+      line-height: 175%;
+      color: var(--neutral-black-b300);
+    }
+  .links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    gap: 16px;
+    &__link {
+      cursor: pointer;
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: var(--font-size--14);
+      line-height: 175%;
+      color: var(--neutral-black-b500);
+      text-decoration: none;
+
+      &:hover{
+        color: var(--neutral-black-b900);
+      }
+    }
+  }

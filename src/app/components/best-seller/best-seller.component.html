@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="container__title">
+    <div class="container__head">
+      <div class="container__title--shop">Shop Now</div>
+      <div class="container__title--bestselling">Best Selling</div>
+    </div>
+  </div>
+
+  <div class="container__products">
+    @for(item of bestseller;track item){
+    <div class="container__products--item">
+      <div class="container__products--item--info">
+        <div class="container__products--item--info--card">
+          <!-- add wishlistand button -->
+          <!-- <div class="container__products--item--info--card--icon"> Initially hidden
+            <img src="/assets/icon/wishlist.svg" class="container__products--item--info--card--icon--child"> Example icon using Font Awesome
+             <button>Click me</button>
+           </div> -->
+          <img [src]="item.img" />
+
+        </div>
+        <div class="container__products--item--info--details">
+          <div class="container__products--item--info--details--description">
+            {{ item.description }}
+          </div>
+          <div class="container__products--item--info--details--bottom">
+            <div class="container__products--item--info--details--bottom--instock">
+              <div class="container__products--item--info--details--bottom--instock--text">
+                {{ item.instock }}
+              </div>
+            </div>
+            <div class="container__products--item--info--details--bottom--instock--price">
+              {{ item.price }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

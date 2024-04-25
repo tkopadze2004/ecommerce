@@ -1,0 +1,37 @@
+<footer class="container-fluid">
+  <div class="container footer">
+    <div class="footer__left">
+      <div class="logo">
+        <img src="/assets/images/logoLight.png" />
+        <div class="logo__brand">Ecommerce</div>
+      </div>
+      <div class="footer__left--text">
+        DevCut is a YouTube channel for practical project-based learning.
+      </div>
+      <div class="footer__left--social-medias">
+        <img src="/assets/icon/Socials/Github.svg" />
+        <img src="/assets/icon/Socials/Instagram.svg" />
+        <img src="/assets/icon/Socials/Youtube.svg" />
+      </div>
+    </div>
+    <div class="footer__center">
+      <div class="footer__center">
+        @for(menu of footermenu ; track menu){
+          <app-footer-link-item
+          [title]="menu.title"
+          [links]="menu.links"
+          />
+        }
+        </div>
+      </div>
+
+    <div class="footer__right">
+      <div class="footer__title">ACCEPTED PAYMENTS</div>
+      <div class="footer__right--payments">
+        <img src="/assets/icon/colored/Mastercard.svg" />
+        <img src="/assets/icon/colored/Amex.svg" />
+        <img src="/assets/icon/colored/Visa.svg" />
+      </div>
+    </div>
+  </div>
+</footer>

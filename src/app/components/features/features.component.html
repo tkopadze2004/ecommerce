@@ -1,0 +1,15 @@
+<!-- <div class="container-fluid"> -->
+  <div class="container feature">
+    @for(item of feature; track item){
+    <div class="feature__left">
+      <div class="delivery">
+        <img [src]="item.icon" />
+        <div class="feature__title">{{ item.title }}</div>
+      </div>
+      <div class="feature__left--text">
+        {{ item.description }}
+      </div>
+    </div>
+    }
+  </div>
+<!-- </div> -->

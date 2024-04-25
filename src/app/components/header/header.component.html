@@ -1,0 +1,27 @@
+<div class="header-ads">
+  Get 25% OFF on your first order. <strong>Order Now</strong>
+</div>
+
+<header class="container">
+  <div class="logo">
+    <img src="/assets/images/logo.svg" width="40px" />
+    <div class="logo__brand">Ecommerce</div>
+  </div>
+
+  <div class="nav">
+    <ul>
+      <li ><a [routerLink]="['/']">Home</a></li>
+      <li ><a [routerLink]="['/categories']">Categories</a></li>
+      <li ><a [routerLink]="['/']">About</a></li>
+      <li ><a [routerLink]="['/']">Contact</a></li>
+    </ul>
+  </div>
+  <div class="profile">
+    <div class="profile__item">
+      <img src="/assets/icon/Cart.svg" />
+    </div>
+    <div class="profile__item" routerLink="/auth"    >
+      <img src="/assets/icon/User-1.svg" />
+    </div>
+  </div>
+</header>

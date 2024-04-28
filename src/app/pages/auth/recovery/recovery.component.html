@@ -2,8 +2,13 @@
 title="Forgot Password"/>
 
 <div class="cont">
-
-  <div class="password-recovery">
+  @if(errorMessage){
+    <app-alert type="error" [message]="errorMessage" />
+    }
+    @if(successMessagge){
+    <app-alert type="success" [message]="successMessagge" />
+    }
+  <div class="auth-description">
     Please enter the email address associated with your account. We'll promptly send you a link to reset your password.
   </div>
   <form [formGroup]="form">
@@ -16,7 +21,7 @@ title="Forgot Password"/>
 
 
     <div class="auth-button">
-      <button alte-button block  (click)="onSubmit()">Send reset link</button>
+      <button alte-button block  (click)="sendLink()">Send reset link</button>
     </div>
   </form>
 

@@ -18,7 +18,23 @@ export class AuthService extends ApiService {
     );
   }
 
-  login(payload:AuthPayload) {
-  return this.post<AuthResponse>(`accounts:signInWithPassword?key=${this.apiKey}`,{...payload,returnSecureToken	:true})
+  login(payload: AuthPayload) {
+    return this.post<AuthResponse>(
+      `accounts:signInWithPassword?key=${this.apiKey}`,
+      { ...payload, returnSecureToken: true }
+    );
+  }
+  sendOobCode(email: string) {
+    return this.post(`accounts:sendOobCode?key=${this.apiKey}`, {
+      requestType: 'PASSWORD_RESET',
+      email,
+    });
+  }
+
+  resetPassword(oobCode:string,newPassword:string){
+    return this.post(`accounts:resetPassword?key=${this.apiKey}`,{
+      oobCode,
+      newPassword
+    })
   }
 }

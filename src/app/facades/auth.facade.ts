@@ -47,6 +47,14 @@ export class AuthFacade {
     );
   }
 
+  sendOobCode(email:string){
+  return  this.authService.sendOobCode(email)
+  }
+
+  resetPassword(oobCode:string,newPassword:string){
+    return this.authService.resetPassword(oobCode,newPassword)
+  }
+
   logout(){
     this.storageService.clear()
   }

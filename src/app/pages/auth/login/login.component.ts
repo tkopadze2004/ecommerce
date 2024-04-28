@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { AuthHeadComponent } from '../auth-head/auth-head.component';
 // import { InputComponent } from '../../../input/input.component';
 import {
@@ -14,7 +14,7 @@ import { InputComponent } from '../../../input/input.component';
 import { AuthFacade } from '../../../facades';
 import { AuthPayload } from '../../../core/interfaces.ts/auth-payload';
 import { AlertComponent } from '../../../components/alert/alert.component';
-import { catchError, throwError } from 'rxjs';
+import { Subject, catchError, takeUntil, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +32,7 @@ import { catchError, throwError } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss', '../auth.style.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy{
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
@@ -41,6 +41,7 @@ export class LoginComponent {
   authFacade = inject(AuthFacade);
   errorMessage:string|null= null
   successMessagge: string | null=null
+  sub$=new Subject()
   submit() {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
@@ -63,6 +64,8 @@ export class LoginComponent {
 
     this.authFacade.login(payload)
     .pipe(
+      takeUntil(this.sub$),
+
       catchError(({error})=>{
         this.errorMessage=error.error.message
         return throwError(()=>error.error.message)
@@ -77,5 +80,9 @@ export class LoginComponent {
         }, 2000);
       }
     });
+  }
+  ngOnDestroy(): void {
+    this.sub$.next(null)
+    this.sub$.complete()
   }
 }

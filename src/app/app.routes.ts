@@ -3,6 +3,7 @@ import { LayoutComponent } from './components';
 
 import { HomeComponent } from './pages/home/home.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
       {
         path:'categories',
         component: CategoriesComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
       },
     ]
   },

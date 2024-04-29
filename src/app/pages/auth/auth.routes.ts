@@ -21,9 +21,5 @@ export const authRoutes: Routes = [
   {
     path: 'resetpassword',
     component: ResetPasswordComponent,
-  },
-  //  {
-  //     path: 'profile',
-  //     component: ProfileComponent,
-  //   },
+  }
 ];

@@ -4,29 +4,29 @@ import { Injectable, inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AuthPayload } from '../core/interfaces.ts/auth-payload';
 import { StorageService } from '../core/services';
-import { tap } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../core/interfaces.ts';
 
 @Injectable({ providedIn: 'root' })
 export class AuthFacade {
   authService = inject(AuthService);
   storageService = inject(StorageService);
-router=inject(Router)
+  router = inject(Router);
 
+  get isAuthenticated(): boolean {
+    return !!this.storageService.getItem('token');
+  }
 
-get isAuthenticated():boolean{
-  return this.storageService.getItem('token')
-}
-
-get token(): string {
-  return this.storageService.getItem('token')
-}
-get refreshToken() {
-  return this.storageService.getItem('refreshToken')
-}
-get user() {
-  return this.storageService.getItem('user')
-}
+  get token(): string {
+    return this.storageService.getItem('token');
+  }
+  get refreshToken() {
+    return this.storageService.getItem('refreshToken');
+  }
+  get user() {
+    return this.storageService.getItem('user');
+  }
 
   register(payload: AuthPayload) {
     return this.authService.register(payload).pipe(
@@ -54,17 +54,27 @@ get user() {
     );
   }
 
-  sendOobCode(email:string){
-  return  this.authService.sendOobCode(email)
+  getUser():Observable <User> {
+    return this.authService.lookup(this.token).pipe(
+      map((res) => {
+        if (res.users.length) {
+          return res.users[0];
+        }
+        return {} as User;
+      })
+    );
+  }
+  sendOobCode(email: string) {
+    return this.authService.sendOobCode(email);
   }
 
-  resetPassword(oobCode:string,newPassword:string){
-    return this.authService.resetPassword(oobCode,newPassword)
+  resetPassword(oobCode: string, newPassword: string) {
+    return this.authService.resetPassword(oobCode, newPassword);
   }
 
   logout() {
-    this.storageService.clear()
-    this.router.navigate(['/'])
+    this.storageService.clear();
+    this.router.navigate(['/']);
   }
 }
 //service-apiservice movaleoba aris api cominukacia xolo afacadsshi biznes logikebs vwert

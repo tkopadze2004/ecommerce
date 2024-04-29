@@ -3,6 +3,7 @@ import { ApiService } from '../core/services';
 import { environment } from '../../environments/environment';
 import { AuthPayload, AuthResponse } from '../core/interfaces.ts/auth-payload';
 import { Observable } from 'rxjs';
+import { User } from '../core/interfaces.ts/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +36,14 @@ export class AuthService extends ApiService {
     return this.post(`accounts:resetPassword?key=${this.apiKey}`,{
       oobCode,
       newPassword
+    })
+  }
+
+  lookup(idToken:string){
+    return this.post<{
+      users: User[]
+    }>(`accounts:lookup?key=${this.apiKey}`,{
+      idToken
     })
   }
 }

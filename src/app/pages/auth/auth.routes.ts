@@ -3,7 +3,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { ProfileComponent } from '../profile/profile.component';
 
 export const authRoutes: Routes = [
   {

@@ -1,14 +1,15 @@
 <div class="title">
   Orders
 </div>
-<div class="product-Item">
-<div class=" first">
-  <img src="./assets/images/Image3.png" >
-  <div class="description">
-    <div class="name">Raw Black T-Shirt Lineup</div>
-    <div class="ordered">Ordered on: 27 July 2023</div>
-    <div class="price">$70.00</div>
-  </div>
-</div>
-<div>sd</div>
-</div>
+@for(item of profile; track item){
+
+<app-base
+[img]="item.img"
+[description]="item.description"
+[orderDate]="item.orderDate"
+[extraContent]="item.extraContent"
+[additionalInfo]="item.additionalInfo"
+[buttonText]="item.buttonText"
+[showBorder]="true"
+/>
+}

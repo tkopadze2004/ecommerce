@@ -1,0 +1,27 @@
+
+<div class="product-item">
+  <div class="first">
+    <img [src]="img" class="img" />
+    <div class="first__description">
+      <div class="first__description--name">{{ description }}</div>
+      <div class="first__description--ordered">{{ orderDate }}</div>
+      <div class="first__description--extraContent">{{ extraContent }}</div>
+    </div>
+    <div class="first__info">
+      <div class="first__info--status" [ngClass]="{'bordered': showBorder}">{{ additionalInfo }}</div>
+      <div>
+        <button
+          class="first__info--buttonText"
+          alte-button
+          block
+          theme="outline"
+        >
+          {{ buttonText }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="hr">
+

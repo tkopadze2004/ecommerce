@@ -1,1 +1,33 @@
-<p>address works!</p>
+<div class="title">Wishlist</div>
+<form [formGroup]="form">
+  <div class="subs">
+  <div class="street-address">
+    <app-input
+      formControlName="streetAddress"
+      type="text"
+      label="Street Address"
+      placeholder="2436 Naples Avenue"
+    />
+  </div>
+
+  <div class="more-details" >
+    <app-input formControlName="City" type="text" label="City"  placeholder="Panama City"/>
+  </div>
+  <div class="more-details">
+    <app-input formControlName="State" type="text" label="State"  placeholder="FL"/>
+  </div>
+  <div class="more-details">
+    <app-input formControlName="zipCode" type="text" label="Zip Code" placeholder="32405"/>
+  </div>
+  <div class="more-details">
+    <app-input formControlName="country" type="text" label="country" placeholder="United States" />
+  </div></div>
+  <button
+  class="saveChangeButton"
+  alte-button
+  block
+  theme="primary"
+>
+Save Changes
+</button>
+</form>

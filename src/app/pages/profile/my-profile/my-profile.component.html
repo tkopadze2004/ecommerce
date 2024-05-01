@@ -1,4 +1,16 @@
 @if(user$ | async;as user){
-  <div>{{user.displayName}} </div>
-  <div>{{user.email}} </div>
+<div>{{ user.displayName }}</div>
+<div>{{ user.email }}</div>
 }
+<div class="title">Account Details</div>
+
+<form [formGroup]="form">
+  <app-input formControlName="fullName" type="text" label="Full name" />
+  <form [formGroup]="form">
+    <app-input formControlName="email" type="email" label=" Email" />
+
+    <div class="auth-button">
+      <button alte-button block>Change password</button>
+    </div>
+  </form>
+</form>

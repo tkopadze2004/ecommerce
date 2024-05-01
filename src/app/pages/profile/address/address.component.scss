@@ -1,0 +1,32 @@
+.street-address {
+  width: 534px;
+}
+.more-details {
+  width: 259px;
+  height: 68px;
+
+  &::placeholder {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 171%;
+    color: var(--neutral-black-b900);
+  }
+}
+.subs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.saveChangeButton {
+  border-radius: 4px;
+  padding: 12px 24px;
+  width: 144px;
+  height: 44px;
+  margin-top: 64px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 175%;
+  color: var(--neutral-white-w900);
+}

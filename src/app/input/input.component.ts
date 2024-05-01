@@ -23,9 +23,8 @@ let uniqId = 1
 export class InputComponent implements ControlValueAccessor {
 
   @Input () type : 'text' | "password" | 'number' | 'email' = 'text'
-  // @Input () placeholder = ''
+  @Input () placeholder = ''
   @Input() label = ''
-
 
 
   value  : string = ''

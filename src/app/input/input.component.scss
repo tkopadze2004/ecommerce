@@ -5,10 +5,11 @@
     line-height: 24px;
     font-family: var(--font-family);
     font-weight: 500;
-    font-size: 14px;
+    font-size: var(--font--size--14);
     line-height: 175%;
     color: var(--neutral-black-b600);
   }
+
 
   input {
     border: 1px solid var(--neutral-black-b100);
@@ -17,7 +18,8 @@
     width: 100%;
     height: 45px;
     outline: none;
-   
+
+
 
     &:focus {
       border: 1px solid var(--neutral-black-b200);

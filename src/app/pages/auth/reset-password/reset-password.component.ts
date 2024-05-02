@@ -26,7 +26,7 @@ import { AlertComponent } from '../../../components/alert/alert.component';
     FormsModule,
     InputComponent,
     ButtonComponent,
-    AlertComponent
+    AlertComponent,
   ],
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss', '../auth.style.scss'],
@@ -44,16 +44,17 @@ export class ResetPasswordComponent implements OnDestroy {
   oobCode: string | null = null;
   errorMessage: string | null = null;
   successMessagge: string | null = null;
-  router=inject(Router)
+  router = inject(Router);
 
   ngOnInit(): void {
+    console.log('dsdsdssd');
     this.errorMessage = null;
     this.successMessagge = null;
     this.ActivatedRoute.queryParams
-      .pipe(
-        takeUntil(this.sub$),
-      )
+      .pipe(takeUntil(this.sub$))
       .subscribe((params) => {
+        console.log(params);
+
         if (params['oobCode']) {
           this.form.patchValue({ oobCode: params['oobCode'] });
         }
@@ -69,22 +70,24 @@ export class ResetPasswordComponent implements OnDestroy {
       newPassword: string;
     };
 
-    this.authfacade.resetPassword(oobCode, newPassword)
-    .pipe(
-      takeUntil(this.sub$),
-      catchError(({error}) => {
-        this.errorMessage = error.error.message;
-        return throwError(() => error.error.message);
-      })
-    )
-    .subscribe((res) => {
-      if(res){
-        this.successMessagge='Password successfully reset,redirecting to login page'
-        setTimeout(() => {
-        this.router.navigate(['/auth'])
-        }, 2000);
-      }
-    });
+    this.authfacade
+      .resetPassword(oobCode, newPassword)
+      .pipe(
+        takeUntil(this.sub$),
+        catchError(({ error }) => {
+          this.errorMessage = error.error.message;
+          return throwError(() => error.error.message);
+        })
+      )
+      .subscribe((res) => {
+        if (res) {
+          this.successMessagge =
+            'Password successfully reset,redirecting to login page';
+          setTimeout(() => {
+            this.router.navigate(['/auth']);
+          }, 2000);
+        }
+      });
   }
   ngOnDestroy(): void {
     this.sub$.next(null);

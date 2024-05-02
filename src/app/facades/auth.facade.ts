@@ -72,6 +72,18 @@ export class AuthFacade {
     return this.authService.resetPassword(oobCode, newPassword);
   }
 
+  passwordchange(password:string){
+    return this.authService.passwordchange(this.token,password).pipe(
+      tap((res) => {
+        this.storageService.setItem('token', res.idToken);
+        this.storageService.setItem('refreshtoken', res.refreshToken);
+        this.storageService.setItem('User', {
+          email: res.email,
+          localid: res.localId,
+        });
+      })
+  )}
+
   logout() {
     this.storageService.clear();
     this.router.navigate(['/']);

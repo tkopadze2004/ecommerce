@@ -11,8 +11,22 @@
   <div class="nav">
     <ul>
       <li><a [routerLink]="['/']">Home</a></li>
-      <li><a [routerLink]="['/categories']">Categories</a></li>
-      <li><a [routerLink]="['/about']">About</a></li>
+      <li><a [cdkMenuTriggerFor]="menu" >Categories</a></li>
+      <li><a [routerLink]="['/about']">About</a>
+      <ng-template #menu>
+        <div class="menu">
+        <ul>
+          @for(category of categories$ | async ;track category.id){
+            <li
+     routerLink="/categories/{{category.id}}" > {{category.name}}
+            </li>
+          }
+
+        </ul>
+      </div>
+
+      </ng-template>
+      </li>
       <li><a [routerLink]="['/contact']">Contact</a></li>
     </ul>
   </div>

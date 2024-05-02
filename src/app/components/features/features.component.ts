@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { feature } from '../../data/features';
+import { CategoryFacade } from '../../facades/category.facade';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-features',
@@ -10,4 +12,6 @@ import { feature } from '../../data/features';
 })
 export class FeaturesComponent {
  feature = feature
+
+
 }

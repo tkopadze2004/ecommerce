@@ -2,17 +2,24 @@ import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { RouterLink } from '@angular/router';
 import { AuthFacade } from '../../facades';
+import {CdkMenuTrigger} from "@angular/cdk/menu";
+import { CategoryFacade } from '../../facades/category.facade';
+import { AsyncPipe } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ButtonComponent, RouterLink],
+  imports: [ButtonComponent, RouterLink,CdkMenuTrigger,AsyncPipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   authfacade = inject(AuthFacade);
+  categoryFacade=inject(CategoryFacade)
 
+  categories$=this.categoryFacade.getCategories()
 
   get user() {
     return this.authfacade.user

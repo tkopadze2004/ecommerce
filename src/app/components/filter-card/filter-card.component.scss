@@ -1,0 +1,17 @@
+.card {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  .filter {
+    
+    font-family: var(--font-family);
+    font-weight: 550;
+    font-size: var(--font--size--14);
+    line-height: 175%;
+    color: var(--neutral-black-b900);
+  }
+  .content{
+    display: flex;
+    flex-direction: column;
+  }
+}

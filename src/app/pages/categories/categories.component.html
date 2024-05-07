@@ -2,3 +2,64 @@
 <pre>
   {{categories$ | async | json}}
 </pre> -->
+<app-breadcrumb />
+
+<div class="container category">
+  <div class="category__side">
+    <div class="category__side--filter">
+      <app-filter-card name="Categories">
+        <div class="flex-column">
+          @for (category of categories$ | async; track category.id ) {
+          <app-filter-card-checkbox-item [name]="category.name" />
+          }
+        </div>
+      </app-filter-card>
+
+      <app-filter-card name="Colors">
+        <div class="flex-row filter-color-content">
+          @for (color of colors$| async; track color.id ) {
+          <app-color-item [color]="color.name" active />
+          }
+        </div>
+      </app-filter-card>
+
+      <app-filter-card name="Size">
+        <div class="flex-row filter-color-content">
+          @for (size of sizes; track size ) {
+          <div class="size">
+            {{ size }}
+          </div>
+          }
+        </div>
+      </app-filter-card>
+    </div>
+  </div>
+  <div class="category--content">
+    <div class="active--filters">
+      <div class="active--filters--title">Applied Filters:</div>
+      <div class="active--filters--cont">
+      <div class="active--filters--cont--category">
+        Perfume
+        <img src="assets/icon/X.svg">
+      </div>
+      <div class="active--filters--cont--size">
+        Size: M
+        <img src="assets/icon/X.svg">
+      </div>
+    </div>
+    </div>
+    <div class="product-info">
+<div class="product-info--result">Showing 1-9 of 36 results.</div>
+<div class="product-info--dropdown">
+  Sort by
+  <img src="assets/icon/dropdown.svg" >
+</div>
+
+    </div>
+    <div class="products">
+      @for(product of   products$  | async ; track product){
+        <app-product-item  [product]="product"/>
+      }
+    </div>
+  </div>
+</div>

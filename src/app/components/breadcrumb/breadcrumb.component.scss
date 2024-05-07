@@ -1,0 +1,30 @@
+.breadcrumb {
+  padding: 18px 0px;
+  width: 100%;
+  height: 64px;
+  background: var(--neutral-white-w100);
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .search {
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: var(--font--size--14);
+      line-height: 175%;
+      color: var(--neutral-black-b900);
+    }
+
+    a,
+    .arrow {
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: var(--font--size--14);
+      line-height: 175%;
+      color: var(--neutral-black-b500);
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+:host
+{
+  border-bottom: 1px solid var(--neutral-white-w200);
+padding: 12px 4px;
+width: 100%;
+height: 49px;
+
+
+label{
+  font-family: var(--font-family);
+font-weight: 400;
+font-size: var(--font--size--14);
+line-height: 175%;
+color: var(--neutral-black-b600);
+display: flex;
+align-items: center;
+gap: 10px;
+}
+}

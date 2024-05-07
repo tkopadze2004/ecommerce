@@ -11,6 +11,16 @@ body,html {
 *{
   box-sizing: border-box;
 }
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.flex-row{
+display: flex;
+align-items: center;
+}
+
 .container{
   width: 100%;
   padding:  0 16px;

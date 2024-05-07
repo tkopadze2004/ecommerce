@@ -8,9 +8,9 @@ import { Products } from "../core/interfaces.ts/products";
 export class ProductService extends ApiService{
 
   getProducts(){
-    return this.get<FirebaseDocument<Products>[]>('categories.json')
+    return this.get<FirebaseDocument<Products>[]>('products.json')
   }
   getProduct(id:string){
-    return this.get<FirebaseDocument<Products>>(`categories/${id}.json`)
+    return this.get<FirebaseDocument<Products>>(`products/${id}.json`)
   }
 }

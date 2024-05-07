@@ -1,0 +1,20 @@
+.color-item {
+  border-radius: 100px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+
+  .color--item__name {
+    border-radius: 100px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &.active {
+    border: 1px solid var(--neutral-black-b900);
+  }
+}

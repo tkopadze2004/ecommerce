@@ -1,13 +1,16 @@
 <div class="product-item">
   <div class="product-item__image">
-  <img src="assets/images/Image1.png">
+  <img [src]="product?.image">
 </div>
 <div class="product-item__name">{{product?.name}} </div>
 <div class="product-item__info">
   <!-- @if(product?.instock){
     <div class="product-item__info--stock">{{product?.instock | stock}} </div>
+
   } -->
-  <div class="product-item__info--stock">{{product?.instock | stock}} </div>
+  <div class="product-item__info--stock">{{product?.instock | instock}} </div>
+
   <div class="product-item__info--price"> {{product?.price | currency : 'USD' : '$'}} </div>
+
 </div>
 </div>

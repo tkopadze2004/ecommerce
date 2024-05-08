@@ -8,11 +8,11 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin: 40px 0 24px;
+    margin: 20px 0 24px;
 
     &--title {
-      font-family: var(--font-family);
-      font-weight: 550;
+      font-family: var(--font--family);
+      font-weight: 500 ;
       font-size: var(--font--size--14);
       line-height: 175%;
       color: var(--neutral-black-b900);
@@ -32,7 +32,7 @@
         width: 120px;
         height: 36px;
 
-        font-family: var(--font-family);
+        font-family: var(--font--family);
         font-weight: 500;
         font-size: var(--font--size--12);
         line-height: 200%;
@@ -51,7 +51,7 @@
       gap: 6px;
       display: flex;
       align-items: center;
-      font-family: var(--font-family);
+      font-family: var(--font--family);
       font-weight: 500;
       font-size: var(--font--size--12);
       line-height: 200%;
@@ -61,7 +61,7 @@
     }
 
     &--result {
-      font-family: var(--font-family);
+      font-family: var(--font--family);
       font-weight: 500;
       font-size: var(--font--size--12);
       line-height: 200%;
@@ -92,8 +92,7 @@
       border-radius: 6px;
       padding: 24px 12px 32px 16px;
       width: 248px;
-      min-height: 500px;
-    }
+      height: 700px;    }
   }
   .filter-color-content {
     gap: 10px;
@@ -109,7 +108,7 @@
     width: 40px;
     height: 40px;
     min-width: 40px;
-    font-family: var(--font-family);
+    font-family: var(--font--family);
     font-weight: 500;
     font-size: var(--font--size--12);
     line-height: 200%;

@@ -6,7 +6,7 @@
   height: 68px;
 
   &::placeholder {
-    font-family: var(--font-family);
+    font-family: var(--font--family);
     font-weight: 400;
     font-size: 14px;
     line-height: 171%;
@@ -24,7 +24,7 @@
   width: 144px;
   height: 44px;
   margin-top: 64px;
-  font-family: var(--font-family);
+  font-family: var(--font--family);
   font-weight: 500;
   font-size: 14px;
   line-height: 175%;

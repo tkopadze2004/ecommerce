@@ -4,8 +4,8 @@ flex-direction: column;
 gap: 25px;
 
   .auth-description{
-    font-family: var(--font-family);
-  font-weight: 400;
+    font-family: var(--font--family);
+    font-weight: 400;
   font-size: var(--font-size-14);
   line-height: 175%;
   color: var(--neutral-black-b600);

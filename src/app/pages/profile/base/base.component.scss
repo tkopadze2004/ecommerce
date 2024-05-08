@@ -17,7 +17,7 @@
       flex-direction: column;
       margin-left: 32px;
       &--name {
-        font-family: var(--font-family);
+        font-family: var(--font--family);
         font-weight: 500;
         font-size: var(--font--size--14);
         line-height: 175%;
@@ -25,7 +25,7 @@
         color: var(--neutral-black-b900);
       }
       &--ordered {
-        font-family: var(--font-family);
+        font-family: var(--font--family);
         font-weight: 500;
         font-size: var(--font--size--12);
         line-height: 200%;
@@ -34,7 +34,7 @@
         color: var(--neutral-black-b500);
       }
       &--extraContent {
-        font-family: var(--font-family);
+        font-family: var(--font--family);
         font-weight: 500;
         font-size: var(--font--size--12);
         line-height: 200%;
@@ -51,7 +51,7 @@
 
       &--status {
         height: 25px;
-        font-family: var(--font-family);
+        font-family: var(--font--family);
         font-weight: 500;
         font-size: var(--font--size--14);
         line-height: 175%;
@@ -63,7 +63,7 @@
       }
 
       &--buttonText {
-        font-family: var(--font-family);
+        font-family: var(--font--family);
         font-weight: 500;
         font-size: var(--font--size--14);
         color: var(--neutral-black-b900);

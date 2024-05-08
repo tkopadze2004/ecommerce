@@ -20,8 +20,8 @@
 
     &__name {
       margin-top: 24px;
-      font-family: var(--font-family);
-      font-weight: 550;
+      font-family: var(--font--family);
+      font-weight: 500;
       font-size: var(--font--size--14);
       line-height: 175%;
       color: var(--neutral-black-b900);
@@ -41,7 +41,7 @@
         padding: 2px 16px;
         width: auto;
         height: 28px;
-        font-family: var(--font-family);
+        font-family: var(--font--family);
         font-weight: 500;
         font-size: var(--font--size--12);
         line-height: 200%;
@@ -50,7 +50,7 @@
 
       }
       &--price {
-        font-family: var(--font-family);
+        font-family: var(--font--family);
         font-weight: 400;
         font-size: var(--font--size--14);
         line-height: 175%;

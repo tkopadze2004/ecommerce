@@ -10,7 +10,7 @@
       color: var(--semantic-red-r900);
     }
     .alert-message {
-      font-family: var(--font-family);
+      font-family: var(--font--family);
       font-weight: 500;
       font-size: 14px;
       line-height: 175%;
@@ -23,7 +23,7 @@
       color: var(--semantic-green-g900);
     }
     .alert-message {
-      font-family: var(--font-family);
+      font-family: var(--font--family);
       font-weight: 500;
       font-size: 14px;
       line-height: 175%;
@@ -36,7 +36,7 @@
           color: var(--neutral-white-w900);
         }
     .alert-message {
-      font-family: var(--font-family);
+      font-family: var(--font--family);
       font-weight: 500;
       font-size: 14px;
       line-height: 175%;

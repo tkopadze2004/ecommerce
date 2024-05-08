@@ -19,7 +19,7 @@ footer {
   justify-content: space-between;
 
   &__title {
-    font-family: var(--font-family);
+    font-family: var(--font--family);
     font-weight: 500;
     --font-size-16: var(--font-size-base);
     line-height: 175%;
@@ -41,7 +41,7 @@ footer {
       }
     }
     &--text {
-      font-family: var(--font-family);
+      font-family: var(--font--family);
       font-weight: 400;
       font-size: var(--font-size--14);
       line-height: 175%;

@@ -20,16 +20,16 @@
     align-items: center;
 
     &--shop {
-      font-family: var(--font-family);
+      font-family: var(--font--family);
       font-weight: 500;
-      font-size: var(--font-size-12);
+      font-size: var(--font-size--12);
       line-height: 200%;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--neutral-black-b300);
     }
     &--bestselling {
-      font-family: var(--font-family);
+      font-family: var(--font--family);
       font-weight: 700;
       font-size: var(--font-size-24);
       color: var(--neutral-black-b900);
@@ -54,26 +54,11 @@
           background: var(--neutral-white-w100);
         }
 
-        // card hovver, add wishlist and button
-        // &--icon{
-        //   display: none;
-        //   &--child{
-        //     width: 40px;
-        //   }
-        // }
-        // &:hover {
-        //   .container__products--item--info--card--icon {
-        //     display: flex;
-        //     justify-content: space-between;
-        //     align-items: end;
-        //   }
-        // }
-        //         }
         &--details {
           &--description {
-            font-family: var(--font-family);
+            font-family: var(--font--family);
             font-weight: 500;
-            font-size: var(--font-size-16);
+            font-size: var(--font-size--16);
             line-height: 175%;
             color: var(--neutral-black-b900);
             margin-top: 25px;
@@ -88,10 +73,10 @@
               border: 1px solid var(--neutral-black-b100);
               border-radius: 100px;
               padding: 2px 16px;
-              width: 91px;
+              width: auto;
               height: 28px;
               &--text {
-                font-family: var(--font-family);
+                font-family: var(--font--family);
                 font-weight: 500;
                 font-size: var(--font-size-12);
                 line-height: 200%;
@@ -99,9 +84,9 @@
                 color: var(--neutral-black-b900);
               }
               &--price {
-                font-family: var(--font-family);
+                font-family: var(--font--family);
                 font-weight: 400;
-                font-size: var(--font-size-14);
+                font-size: var(--font-size--14);
                 line-height: 175%;
                 text-align: center;
                 color: var(--neutral-black-b600);

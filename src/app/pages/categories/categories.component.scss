@@ -12,7 +12,7 @@
 
     &--title {
       font-family: var(--font--family);
-      font-weight: 500 ;
+      font-weight: 500;
       font-size: var(--font--size--14);
       line-height: 175%;
       color: var(--neutral-black-b900);
@@ -80,6 +80,15 @@
       gap: 24px;
     }
   }
+  .no-result {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    font-family: var(--font--family);
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: var(--font-size-24);
+  }
 
   &__side {
     display: flex;
@@ -92,7 +101,8 @@
       border-radius: 6px;
       padding: 24px 12px 32px 16px;
       width: 248px;
-      height: 700px;    }
+      height: 700px;
+    }
   }
   .filter-color-content {
     gap: 10px;
@@ -117,7 +127,7 @@
     color: var(--neutral-black-b500);
     padding: 8px;
 
-    &:hover {
+    &.active,&:hover {
       border: 1px solid var(--neutral-black-b900);
       color: var(--neutral-black-b900);
     }

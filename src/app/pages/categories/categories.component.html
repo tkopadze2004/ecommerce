@@ -6,7 +6,7 @@
       <app-filter-card name="Categories">
         <div class="flex-column">
           @for (category of categories$ | async; track category.id ) {
-          <app-filter-card-checkbox-item [name]="category.name" />
+          <app-filter-card-checkbox-item (check)="onCategoryCheck($event)" [active]="selectedCategory.has(category.id)" [category]="category" />
           }
         </div>
       </app-filter-card>
@@ -14,7 +14,7 @@
       <app-filter-card name="Colors">
         <div class="flex-row filter-color-content">
           @for (color of colors$| async; track color.id ) {
-          <app-color-item [color]="color.name" active />
+          <app-color-item [color]="color" [active]='color.id===selectedColor' (selected)="selectColor($event)" />
           }
         </div>
       </app-filter-card>
@@ -22,7 +22,7 @@
       <app-filter-card name="Size">
         <div class="flex-row filter-color-content">
           @for (size of sizes; track size ) {
-          <div class="size">
+          <div class="size"  [class.active]="size===selectedSize" (click)="selectSize(size)">
             {{ size }}
           </div>
           }
@@ -50,12 +50,18 @@
   Sort by
   <img src="assets/icon/dropdown.svg" >
 </div>
-
     </div>
+    @if(products){
     <div class="products">
-      @for(product of   products$  | async ; track product){
+      @for(product of   products || []  ; track product.id){
         <app-product-item  [product]="product"/>
       }
     </div>
+    @if(products.length===0){
+      <div class="no-result"> item not found</div>
+    }
+  }
+
+
   </div>
 </div>

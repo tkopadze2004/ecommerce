@@ -1,5 +1,6 @@
 import { NgStyle } from '@angular/common';
-import { Component, Input, booleanAttribute } from '@angular/core';
+import { Component, EventEmitter, Input, Output, booleanAttribute } from '@angular/core';
+import { colors } from '../../core/interfaces.ts/colors.interface';
 
 
 @Component({
@@ -10,8 +11,9 @@ import { Component, Input, booleanAttribute } from '@angular/core';
   styleUrl: './color-item.component.scss'
 })
 export class ColorItemComponent {
-  @Input() color: string = '#4078ff';
+  @Input() color: colors = {} as colors;
 
   @Input({transform:booleanAttribute}) active: boolean = false;
+@Output() selected :EventEmitter<colors>=new EventEmitter<colors>
 
 }

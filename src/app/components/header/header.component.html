@@ -18,10 +18,16 @@
         <ul>
           @for(category of categories$ | async ;track category.id){
             <li
-     routerLink="/categories/{{category.id}}" > {{category.name}}
+     routerLink="/categories"  [queryParams]="{
+      category: [category.id]
+      }"
+
+
+     > {{category.name}}
             </li>
           }
 
+         
         </ul>
       </div>
 

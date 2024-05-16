@@ -3,6 +3,7 @@ import { LayoutComponent } from './components';
 
 import { HomeComponent } from './pages/home/home.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 export const routes: Routes = [
   {
@@ -18,8 +19,12 @@ export const routes: Routes = [
         loadChildren: () => import('./pages/auth/auth.routes').then(m => m.authRoutes)
       },
       {
-        path:'categories/:id',
+        path:'categories',
         component: CategoriesComponent
+      },
+      {
+        path:'product/:id',
+        component:ProductsComponent
       },
       {
         path: 'profile',

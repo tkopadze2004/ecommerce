@@ -6,12 +6,12 @@ export interface Products {
   price: string;
   discount: string;
   image: string[];
-  colors: string[];
-  sizes: string[];
+  colorId: string;
+  size: string;
+  categoryId: string;
 
   review: {
     stars: number;
     count: number;
   };
-  categoryId: string;
 }

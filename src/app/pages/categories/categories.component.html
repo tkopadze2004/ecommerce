@@ -1,4 +1,7 @@
-<app-breadcrumb />
+<app-breadcrumb
+  hasBackground
+  qurrentPage="search"
+/>
 
 <div class="container category">
   <div class="category__side">
@@ -6,7 +9,11 @@
       <app-filter-card name="Categories">
         <div class="flex-column">
           @for (category of categories$ | async; track category.id ) {
-          <app-filter-card-checkbox-item (check)="onCategoryCheck($event)" [active]="selectedCategory.has(category.id)" [category]="category" />
+          <app-filter-card-checkbox-item
+            (check)="onCategoryCheck($event)"
+            [active]="selectedCategory.has(category.id)"
+            [category]="category"
+          />
           }
         </div>
       </app-filter-card>
@@ -14,7 +21,11 @@
       <app-filter-card name="Colors">
         <div class="flex-row filter-color-content">
           @for (color of colors$| async; track color.id ) {
-          <app-color-item [color]="color" [active]='color.id===selectedColor' (selected)="selectColor($event)" />
+          <app-color-item
+            [color]="color"
+            [active]="color.id === selectedColor"
+            (selected)="selectColor($event)"
+          />
           }
         </div>
       </app-filter-card>
@@ -22,7 +33,11 @@
       <app-filter-card name="Size">
         <div class="flex-row filter-color-content">
           @for (size of sizes; track size ) {
-          <div class="size"  [class.active]="size===selectedSize" (click)="selectSize(size)">
+          <div
+            class="size"
+            [class.active]="size === selectedSize"
+            (click)="selectSize(size)"
+          >
             {{ size }}
           </div>
           }
@@ -34,34 +49,31 @@
     <div class="active--filters">
       <div class="active--filters--title">Applied Filters:</div>
       <div class="active--filters--cont">
-      <div class="active--filters--cont--category">
-        Perfume
-        <img src="assets/icon/X.svg">
+        <div class="active--filters--cont--category">
+          Perfume
+          <img src="assets/icon/X.svg" />
+        </div>
+        <div class="active--filters--cont--size">
+          Size: M
+          <img src="assets/icon/X.svg" />
+        </div>
       </div>
-      <div class="active--filters--cont--size">
-        Size: M
-        <img src="assets/icon/X.svg">
-      </div>
-    </div>
     </div>
     <div class="product-info">
-<div class="product-info--result">Showing 1-9 of 36 results.</div>
-<div class="product-info--dropdown">
-  Sort by
-  <img src="assets/icon/dropdown.svg" >
-</div>
+      <div class="product-info--result">Showing 1-9 of 36 results.</div>
+      <div class="product-info--dropdown">
+        Sort by
+        <img src="assets/icon/dropdown.svg" />
+      </div>
     </div>
     @if(products){
     <div class="products">
-      @for(product of   products || []  ; track product.id){
-        <app-product-item  [product]="product"/>
+      @for(product of products || [] ; track product.id){
+      <app-product-item [product]="product" />
       }
     </div>
     @if(products.length===0){
-      <div class="no-result"> item not found</div>
-    }
-  }
-
-
+    <div class="no-result">item not found</div>
+    } }
   </div>
 </div>

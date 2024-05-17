@@ -1,0 +1,52 @@
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 80px;
+
+  &--img {
+    background: var(--neutral-white-w100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 76px 123px;
+    width: 534px;
+    height: 574px;
+
+    img {
+      width: 288px;
+      height: 404px;
+    }
+  }
+
+  &--info {
+    padding-left: 120px;
+    h1 {
+      font-family: var(--font--family);
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--neutral-black-b900);
+      padding: 0;
+      margin: 0;
+    }
+
+    &__stock--reviews {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      border-radius: 100px;
+      padding: 0px 8px 0px 0px;
+      width: auto;
+      height: 28px;
+
+    }
+    &__price {
+      font-family: var(--font--family);
+      font-weight: 600;
+      font-size: 18px;
+      margin-top: 24px;
+      color: var(--neutral-black-b900);
+    }
+  }
+}

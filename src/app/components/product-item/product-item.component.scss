@@ -33,22 +33,7 @@
       align-items: center;
       gap: 16px;
 
-      &--stock {
-        display: flex;
-        align-items: center;
-        border: 1px solid var(--neutral-black-b100);
-        border-radius: 100px;
-        padding: 2px 16px;
-        width: auto;
-        height: 28px;
-        font-family: var(--font--family);
-        font-weight: 500;
-        font-size: var(--font--size--12);
-        line-height: 200%;
-        text-transform: uppercase;
-        color: var(--neutral-black-b900);
-
-      }
+     
       &--price {
         font-family: var(--font--family);
         font-weight: 400;

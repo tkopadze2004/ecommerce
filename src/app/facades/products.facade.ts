@@ -7,7 +7,8 @@ import { Products } from '../core/interfaces.ts/products';
 export class ProductsFacade {
   productsservice = inject(ProductService);
 
-  getProducts() {
+  getProducts(params:{categoryId:string[],colorId?:string,size?:string } ) {
+
     return this.productsservice.getProducts().pipe(
       map((Products) => {
         return Object.keys(Products).map(
@@ -17,20 +18,45 @@ export class ProductsFacade {
               id: key,
             } as Products)
         );
+      }),map((products)=> {
+
+
+        return products.filter((product)=>{
+
+          if(params.categoryId.length && !params.categoryId.includes(product.categoryId)){
+            return false
+          }
+          if(params.colorId && params.colorId!==product.colorId){
+            return false
+          }
+          if(params.size && params.size!==product.size){
+            return false
+          }
+
+          return true
+
+
+          // if(params.categoryId.length){
+          //   products=  products.filter((product) => params.categoryId.includes(product.categoryId) )
+          // }
+          // if(params.colorId){
+          //   products=  products.filter((product) => product.colorId===params.colorId)
+          // }
+          // if(params.size){
+          //   products=  products.filter((product) => product.size===params.size)
+          // }
+        })
       })
-    );
+
+    )
   }
   getProduct(id: string) {
     return this.productsservice.getProduct(id).pipe(
-      map((Products) => {
-        return Object.keys(Products).map(
-          (key: any) =>
-            ({
-              ...Products,
-              id,
-            } as Products)
-        );
+      map((product) => {
+        return {
+          ...product,
+          id,
+        } as Products
       })
-    );
-  }
+    )}
 }

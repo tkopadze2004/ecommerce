@@ -1,4 +1,4 @@
-<div class="product-item">
+<div class="product-item" [routerLink]="['/product' ,product?.id]"  >
   <div class="product-item__image">
   <img [src]="product?.image">
 </div>
@@ -8,7 +8,7 @@
     <div class="product-item__info--stock">{{product?.instock | stock}} </div>
 
   } -->
-  <div class="product-item__info--stock">{{product?.instock | instock}} </div>
+  <app-stock-check   *ngIf="product && product.instock !== undefined" [instock]="product.instock || false" />
 
   <div class="product-item__info--price"> {{product?.price | currency : 'USD' : '$'}} </div>
 

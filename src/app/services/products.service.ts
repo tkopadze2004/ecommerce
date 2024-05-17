@@ -1,16 +1,18 @@
-import { Injectable } from "@angular/core";
-import { ApiService } from "../core/services";
-import { FirebaseDocument } from "../core/interfaces.ts/firebase-document";
-import { Products } from "../core/interfaces.ts/products";
+import { Injectable } from '@angular/core';
+import { ApiService } from '../core/services';
+import { FirebaseDocument } from '../core/interfaces.ts/firebase-document';
+import { Products } from '../core/interfaces.ts/products';
+import { tap } from 'rxjs';
 
-@Injectable({providedIn:"root"})
+@Injectable({ providedIn: 'root' })
+export class ProductService extends ApiService {
+  getProducts() {
+    return this.get<FirebaseDocument<Products>[]>('products.json', {
 
-export class ProductService extends ApiService{
 
-  getProducts(){
-    return this.get<FirebaseDocument<Products>[]>('products.json')
+    })
   }
-  getProduct(id:string){
-    return this.get<FirebaseDocument<Products>>(`products/${id}.json`)
+  getProduct(id: string)  {
+    return this.get<FirebaseDocument<Products>>(`products/${id}.json`);
   }
 }

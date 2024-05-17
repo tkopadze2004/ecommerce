@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CategoryFacade } from '../../facades/category.facade';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 import { FilterCardComponent } from '../../components/filter-card/filter-card.component';
@@ -27,6 +27,7 @@ import { colors } from '../../core/interfaces.ts/colors.interface';
     FilterCardComponent,
     FilterCardCheckboxItemComponent,
     ColorItemComponent,
+    NgIf,
     ProductItemComponent,
   ],
 })

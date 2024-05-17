@@ -2,7 +2,7 @@ export interface Products {
   id: string;
   name: string;
   description: string;
-  instock: boolean;
+  instock?: boolean;
   price: string;
   discount: string;
   image: string[];
@@ -10,8 +10,10 @@ export interface Products {
   size: string;
   categoryId: string;
 
-  review: {
-    stars: number;
-    count: number;
-  };
+  review: review;
+}
+
+export interface review {
+  stars: number;
+  count: number;
 }

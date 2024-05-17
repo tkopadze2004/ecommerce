@@ -1,9 +1,9 @@
-<div class="container--fluid breadcrumb ">
+<div class="container--fluid breadcrumb "    [style.background-color]="hasBackground ? 'var(--neutral-white-w100)' : null">
 <div class="container">
   <div class="breadcrumb__nav">
     <a [routerLink]="['/']">Ecommerce</a>
     <div class="arrow"> > </div>
-    <div class="search">Search</div>
+    <div class="search">{{qurrentPage}} </div>
   </div>
 </div>
 </div>

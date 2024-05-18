@@ -20,6 +20,21 @@
   }
 
   &--info {
+    &__color {
+      font-family: var(--font--family);
+      font-weight: 500;
+      font-size: var(--font--size--14);
+      line-height: 200%;
+      letter-spacing: 0.05em;
+      margin-top: 32px;
+      text-transform: uppercase;
+      color: var(--neutral-black-b500);
+
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+    }
+
     padding-left: 120px;
     h1 {
       font-family: var(--font--family);
@@ -39,7 +54,6 @@
       padding: 0px 8px 0px 0px;
       width: auto;
       height: 28px;
-
     }
     &__price {
       font-family: var(--font--family);

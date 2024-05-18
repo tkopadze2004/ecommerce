@@ -10,26 +10,28 @@ import { ColorItemComponent } from '../../components/color-item/color-item.compo
 import { SIZE, SIZES } from '../../core/types/size.type';
 import { ProductItemComponent } from '../../components/product-item/product-item.component';
 import { ProductsFacade } from '../../facades/products.facade';
-import { Subject, switchMap, take, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { category } from '../../core/interfaces.ts/category.interface';
 import { Products } from '../../core/interfaces.ts/products';
 import { colors } from '../../core/interfaces.ts/colors.interface';
+import { SizeItemComponent } from "../../components/size-item/size-item.component";
 
 @Component({
-  selector: 'app-categories',
-  standalone: true,
-  templateUrl: './categories.component.html',
-  styleUrl: './categories.component.scss',
-  imports: [
-    JsonPipe,
-    AsyncPipe,
-    BreadcrumbComponent,
-    FilterCardComponent,
-    FilterCardCheckboxItemComponent,
-    ColorItemComponent,
-    NgIf,
-    ProductItemComponent,
-  ],
+    selector: 'app-categories',
+    standalone: true,
+    templateUrl: './categories.component.html',
+    styleUrl: './categories.component.scss',
+    imports: [
+        JsonPipe,
+        AsyncPipe,
+        BreadcrumbComponent,
+        FilterCardComponent,
+        FilterCardCheckboxItemComponent,
+        ColorItemComponent,
+        NgIf,
+        ProductItemComponent,
+        SizeItemComponent
+    ]
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
   route = inject(ActivatedRoute);
@@ -53,19 +55,17 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.queryParams.pipe(takeUntil(this.sub$)).subscribe((params) => {
       console.log(params);
-// this.selectedCategory.clear();
+      // this.selectedCategory.clear();
       // this.selectedCategory.set(params['id'], {} as category),
-      this.selectedColor=params['color']
-      this.selectedSize=params['size']
+      this.selectedColor = params['color'];
+      this.selectedSize = params['size'];
 
-        this.getProducts(
-          [...this.selectedCategory.keys()],
-          this.selectedColor,
-          this.selectedSize
-
-        )
-
-});
+      this.getProducts(
+        [...this.selectedCategory.keys()],
+        this.selectedColor,
+        this.selectedSize
+      );
+    });
   }
 
   getProducts(categoryId: string[], colorId?: string, size?: string) {
@@ -103,19 +103,21 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     //   this.selectedSize
     // );
 
-    this.router.navigate([],{
-      queryParams:{
-        color:this.selectedColor
-      },queryParamsHandling:'merge'
-    })
+    this.router.navigate([], {
+      queryParams: {
+        color: this.selectedColor,
+      },
+      queryParamsHandling: 'merge',
+    });
   }
   selectSize(size: SIZE) {
     this.selectedSize = size;
-    this.router.navigate([],{
-      queryParams:{
-        size:this.selectedSize
-  },queryParamsHandling:'merge'
-})
+    this.router.navigate([], {
+      queryParams: {
+        size: this.selectedSize,
+      },
+      queryParamsHandling: 'merge',
+    });
     // this.getProducts(
     //   [...this.selectedCategory.keys()],
     //   this.selectedColor?.id,

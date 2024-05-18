@@ -1,20 +1,32 @@
 @if(product$| async; as product){
-  <app-breadcrumb  [qurrentPage]="product.name" />
+<app-breadcrumb [qurrentPage]="product.name" />
 
-  <div class="container product">
-    <div class="product--img"> <img [src]="product.image" >  </div>
-    <div class="product--info">
-   <h1>{{product.name}}</h1>
-<div class="product--info__stock--reviews">
-<app-review  *ngIf="product.review" [review]="product.review"/>
-<app-stock-check  class="SH"  *ngIf="product && product.instock !== undefined" [instock]="product.instock || false" />
-</div>
-<div class="product--info__price">
-  {{product.price |currency : "USD" }}
-</div>
+<div class="container product">
+  <div class="product--img"><img [src]="product.image" /></div>
+  <div class="product--info">
+    <h1>{{ product.name }}</h1>
+    <div class="product--info__stock--reviews">
+      <app-review *ngIf="product.review" [review]="product.review" />
+      <app-stock-check
+        class="SH"
+        *ngIf="product && product.instock !== undefined"
+        [instock]="product.instock || false"
+      />
+    </div>
+    <div class="product--info__price">
+      {{ product.price | currency : "USD" }}
+    </div>
+    <div class="product--info__color">
+      <div>Available Colors</div>
+      <app-color-item [color]="product.color" />
+    </div>
+
+    <div class="product--info__color">
+      <div>Select Size</div>
+      <app-size-item
+          [size]="product.size"
+          />
     </div>
   </div>
+</div>
 }
-
-
-

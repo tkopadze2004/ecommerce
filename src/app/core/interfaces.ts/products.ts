@@ -1,3 +1,5 @@
+import { SIZE } from "../types/size.type";
+
 export interface Products {
   id: string;
   name: string;
@@ -7,7 +9,7 @@ export interface Products {
   discount: string;
   image: string[];
   colorId: string;
-  size: string;
+  size: SIZE;
   categoryId: string;
 
   review: review;

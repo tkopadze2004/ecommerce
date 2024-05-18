@@ -9,13 +9,15 @@ import { colorsFacade } from '../../facades/colors.facade';
 import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 import { ReviewComponent } from "../../components/review/review.component";
 import { StockCheckComponent } from "../../components/stock-check/stock-check.component";
+import { ColorItemComponent } from "../../components/color-item/color-item.component";
+import { SizeItemComponent } from "../../components/size-item/size-item.component";
 
 @Component({
     selector: 'app-products',
     standalone: true,
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
-    imports: [AsyncPipe, JsonPipe, BreadcrumbComponent, ReviewComponent, NgIf, StockCheckComponent,CurrencyPipe]
+    imports: [AsyncPipe, JsonPipe, BreadcrumbComponent, ReviewComponent, NgIf, StockCheckComponent, CurrencyPipe, ColorItemComponent, SizeItemComponent]
 })
 export class ProductsComponent {
   activatedroute = inject(ActivatedRoute);
@@ -52,4 +54,5 @@ export class ProductsComponent {
     ),
     share()
   );
+size: any;
 }

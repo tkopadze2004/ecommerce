@@ -1,7 +1,4 @@
-<app-breadcrumb
-  hasBackground
-  qurrentPage="search"
-/>
+<app-breadcrumb hasBackground qurrentPage="search" />
 
 <div class="container category">
   <div class="category__side">
@@ -33,13 +30,11 @@
       <app-filter-card name="Size">
         <div class="flex-row filter-color-content">
           @for (size of sizes; track size ) {
-          <div
-            class="size"
-            [class.active]="size === selectedSize"
+          <app-size-item
+            [size]="size"
+            [selected]="size === selectedSize"
             (click)="selectSize(size)"
-          >
-            {{ size }}
-          </div>
+          />
           }
         </div>
       </app-filter-card>

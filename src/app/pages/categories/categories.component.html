@@ -12,6 +12,7 @@
             [category]="category"
           />
           }
+
         </div>
       </app-filter-card>
 
@@ -61,13 +62,13 @@
         <img src="assets/icon/dropdown.svg" />
       </div>
     </div>
-    @if(products){
+    @if(products$ | async ; as product){
     <div class="products">
-      @for(product of products || [] ; track product.id){
+      @for(product of product || [] ; track product.id){
       <app-product-item [product]="product" />
       }
     </div>
-    @if(products.length===0){
+    @if(product.length===0){
     <div class="no-result">item not found</div>
     } }
   </div>

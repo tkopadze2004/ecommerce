@@ -10,30 +10,30 @@ import { ColorItemComponent } from '../../components/color-item/color-item.compo
 import { SIZE, SIZES } from '../../core/types/size.type';
 import { ProductItemComponent } from '../../components/product-item/product-item.component';
 import { ProductsFacade } from '../../facades/products.facade';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { category } from '../../core/interfaces.ts/category.interface';
 import { Products } from '../../core/interfaces.ts/products';
 import { colors } from '../../core/interfaces.ts/colors.interface';
-import { SizeItemComponent } from "../../components/size-item/size-item.component";
+import { SizeItemComponent } from '../../components/size-item/size-item.component';
 
 @Component({
-    selector: 'app-categories',
-    standalone: true,
-    templateUrl: './categories.component.html',
-    styleUrl: './categories.component.scss',
-    imports: [
-        JsonPipe,
-        AsyncPipe,
-        BreadcrumbComponent,
-        FilterCardComponent,
-        FilterCardCheckboxItemComponent,
-        ColorItemComponent,
-        NgIf,
-        ProductItemComponent,
-        SizeItemComponent
-    ]
+  selector: 'app-categories',
+  standalone: true,
+  templateUrl: './categories.component.html',
+  styleUrl: './categories.component.scss',
+  imports: [
+    JsonPipe,
+    AsyncPipe,
+    BreadcrumbComponent,
+    FilterCardComponent,
+    FilterCardCheckboxItemComponent,
+    ColorItemComponent,
+    NgIf,
+    ProductItemComponent,
+    SizeItemComponent,
+  ],
 })
-export class CategoriesComponent implements OnInit, OnDestroy {
+export class CategoriesComponent {
   route = inject(ActivatedRoute);
   router = inject(Router);
   categoryFacade = inject(CategoryFacade);
@@ -48,39 +48,29 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   categories$ = this.categoryFacade.getCategories();
   colors$ = this.colorfacade.getColors();
 
-  products: Products[] = [];
+  products$ = this.route.queryParams.pipe(
+    tap((params) => {
+      this.selectedCategory.clear();
+      const category = params['category'];
 
-  sub$ = new Subject();
-
-  ngOnInit() {
-    this.route.queryParams.pipe(takeUntil(this.sub$)).subscribe((params) => {
-      console.log(params);
-      // this.selectedCategory.clear();
-      // this.selectedCategory.set(params['id'], {} as category),
-      this.selectedColor = params['color'];
-      this.selectedSize = params['size'];
-
-      this.getProducts(
-        [...this.selectedCategory.keys()],
-        this.selectedColor,
-        this.selectedSize
-      );
-    });
-  }
-
-  getProducts(categoryId: string[], colorId?: string, size?: string) {
-    this.productFacade
-      .getProducts({
-        categoryId,
-        colorId,
-        size,
-      })
-      .pipe(takeUntil(this.sub$))
-      .subscribe((products) => {
-        console.log(products);
-        this.products = products;
+      if (category) {
+        if (Array.isArray(category)) {
+          category.forEach((id) => {
+            this.selectedCategory.set(id, {} as category);
+          });
+        } else {
+          this.selectedCategory.set(category, {} as category);
+        }
+      }
+    }),
+    switchMap((params) => {
+      return this.productFacade.getProducts({
+        categoryId: params['category'],
+        colorId: params['color'],
+        size: params['size'],
       });
-  }
+    })
+  );
 
   onCategoryCheck($event: { category: category; checked: boolean }) {
     if (!$event.checked) {
@@ -97,12 +87,6 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 
   selectColor(color: colors) {
     this.selectedColor = color.id;
-    // this.getProducts(
-    //   [...this.selectedCategory.keys()],
-    //   this.selectedColor.id,
-    //   this.selectedSize
-    // );
-
     this.router.navigate([], {
       queryParams: {
         color: this.selectedColor,
@@ -118,15 +102,5 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       },
       queryParamsHandling: 'merge',
     });
-    // this.getProducts(
-    //   [...this.selectedCategory.keys()],
-    //   this.selectedColor?.id,
-    //   this.selectedSize
-    // );
-  }
-
-  ngOnDestroy(): void {
-    this.sub$.next(null);
-    this.sub$.complete();
   }
 }

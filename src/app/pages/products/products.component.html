@@ -23,9 +23,12 @@
 
     <div class="product--info__color">
       <div>Select Size</div>
-      <app-size-item
-          [size]="product.size"
-          />
+      <app-size-item [size]="product.size" />
+    </div>
+
+    <div class="product--info__quantity">
+      <div>Quantity</div>
+      <app-quantity-input [(quantity)]="quantity" />
     </div>
   </div>
 </div>

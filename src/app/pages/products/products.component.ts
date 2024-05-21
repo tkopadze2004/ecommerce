@@ -11,19 +11,21 @@ import { ReviewComponent } from "../../components/review/review.component";
 import { StockCheckComponent } from "../../components/stock-check/stock-check.component";
 import { ColorItemComponent } from "../../components/color-item/color-item.component";
 import { SizeItemComponent } from "../../components/size-item/size-item.component";
+import { QuantityInputComponent } from "../../quantity-input/quantity-input.component";
 
 @Component({
     selector: 'app-products',
     standalone: true,
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
-    imports: [AsyncPipe, JsonPipe, BreadcrumbComponent, ReviewComponent, NgIf, StockCheckComponent, CurrencyPipe, ColorItemComponent, SizeItemComponent]
+    imports: [AsyncPipe, JsonPipe, BreadcrumbComponent, ReviewComponent, NgIf, StockCheckComponent, CurrencyPipe, ColorItemComponent, SizeItemComponent, QuantityInputComponent]
 })
 export class ProductsComponent {
   activatedroute = inject(ActivatedRoute);
   ProductsFacade = inject(ProductsFacade);
   categoryFacade = inject(CategoryFacade);
   colorsFacade = inject(colorsFacade);
+  quantity:number=1
   product$ = this.activatedroute.params.pipe(
     switchMap((params) =>
       this.ProductsFacade.getProduct(params['id'])

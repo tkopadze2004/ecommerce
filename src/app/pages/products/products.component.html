@@ -28,11 +28,11 @@
 
     <div class="product--info__quantity">
       <div>Quantity</div>
-      <app-quantity-input [(quantity)]="quantity" />
+      <app-quantity-input [(quantity)]="quantity"  />
     </div>
 
     <div class="product--info__add-to-cart">
-      <button alte-button block class="add-to-cart--btn" (click)="addToCart()">
+      <button alte-button block class="add-to-cart--btn" (click)="addToCart(product)">
         Add to cart
       </button>
       <button alte-button theme="outline-icon" (click)="addToWishlist()">

@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Products } from '../core/interfaces.ts/products';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartFacade {
-  cart = new BehaviorSubject([]);
+  cart = new BehaviorSubject<Products[]> ([]);
   cart$ = this.cart.asObservable();
+
+  constructor(){
+    this.cart.next(this.getFromLocalStorage())
+  }
 
   setToLocalStorage(cart: any) {
     localStorage.setItem('cart', JSON.stringify(cart));

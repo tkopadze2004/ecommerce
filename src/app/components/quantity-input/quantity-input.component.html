@@ -4,7 +4,7 @@
     <img src='/assets/icon/Minus.svg'>
   </div>
   <div class="quantity-input--value">
-<input  [(ngModel)]="quantity">
+<input  [(ngModel)]="quantity" [min]="1" (ngModelChange)="onInputChange($event)">
   </div>
   <div class="quantity-input--increase" (click)="increase()">
     <img src='/assets/icon/Add.svg'>

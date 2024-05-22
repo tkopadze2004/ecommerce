@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/products.service';
-import { Observable, map, mergeMap, share, switchMap, tap } from 'rxjs';
+import { Observable, map, mergeMap, share, shareReplay, switchMap, tap } from 'rxjs';
 import {
   AsyncPipe,
   CurrencyPipe,
@@ -49,7 +49,7 @@ export class ProductsComponent {
   activatedroute = inject(ActivatedRoute);
   ProductsFacade = inject(ProductsFacade);
   categoryFacade = inject(CategoryFacade);
-  cartFacade=inject(CartFacade)
+  cartFacade = inject(CartFacade);
   colorsFacade = inject(colorsFacade);
   sanitaizer = inject(DomSanitizer);
 
@@ -82,19 +82,20 @@ export class ProductsComponent {
           )
         )
     )
-  );
+  )
+
 
   relatedProducts$: Observable<Products[]> = this.product$.pipe(
     switchMap((product) =>
       this.ProductsFacade.getRelatedProducts(product.categoryId, product.id)
     )
   );
-  ragaca$ = this.relatedProducts$.subscribe((res) => console.log(res));
+  // ragaca$ = this.relatedProducts$.subscribe((res) => console.log(res));
 
   addToWishlist() {
     throw new Error('Method not implemented.');
   }
-  addToCart() {
-    throw new Error('Method not implemented.');
+  addToCart(product: Products) {
+    this.cartFacade.addToCart(product, this.quantity);
   }
 }

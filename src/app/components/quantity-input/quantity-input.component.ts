@@ -13,6 +13,9 @@ export class QuantityInputComponent {
   @Output() quantityChange: EventEmitter<number> = new EventEmitter<number>();
 
   decrease() {
+    if(this.quantity===1){
+      return
+    }
     this.quantity -= 1;
     this.quantityChange.emit(this.quantity);
   }
@@ -20,5 +23,11 @@ export class QuantityInputComponent {
     this.quantity += 1;
     this.quantityChange.emit(this.quantity)
 
+  }
+  onInputChange($event:any){
+    if($event < 1){
+      this.quantity==1
+    }
+    this.quantityChange.emit(this.quantity)
   }
 }

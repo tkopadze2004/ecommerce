@@ -11,47 +11,49 @@
   <div class="nav">
     <ul>
       <li><a [routerLink]="['/']">Home</a></li>
-      <li><a [cdkMenuTriggerFor]="menu" >Categories</a></li>
-      <li><a [routerLink]="['/about']">About</a>
-      <ng-template #menu>
-        <div class="menu">
-        <ul>
-          @for(category of categories$ | async ;track category.id){
-            <li
-     routerLink="/categories"  [queryParams]="{
-      category: [category.id]
-      }"
-
-
-     > {{category.name}}
-            </li>
-          }
-
-         
-        </ul>
-      </div>
-
-      </ng-template>
+      <li><a [cdkMenuTriggerFor]="menu">Categories</a></li>
+      <li>
+        <a [routerLink]="['/about']">About</a>
+        <ng-template #menu>
+          <div class="menu">
+            <ul>
+              @for(category of categories$ | async ;track category.id){
+              <li
+                routerLink="/categories"
+                [queryParams]="{
+                  category: [category.id]
+                }"
+              >
+                {{ category.name }}
+              </li>
+              }
+            </ul>
+          </div>
+        </ng-template>
       </li>
       <li><a [routerLink]="['/contact']">Contact</a></li>
     </ul>
   </div>
   <div class="profile">
     <div class="profile__item">
+<div>      {{cartCount$ |async  | currency : 'USD' : '$'}}  
+  <!-- {{ cartCountt$ | async}}  product count -->
+</div>
       <img src="/assets/icon/Cart.svg" />
     </div>
-<!-- tu isAuthenticated is true mashin profilze sheval  tu false ikneba auth damabrunebs, es xdvea token sashualbeit -->
+
+    <!-- tu isAuthenticated is true mashin profilze sheval  tu false ikneba auth damabrunebs, es xdvea token sashualbeit -->
     @if (isAuthenticated){
-      <div id="profile" class="profile__item" routerLink="/profile">
-        <img src="assets/icon/User-1.svg"/>
-      </div>
-      <div  class="profile__item" (click)="logout()">
-        <img src="assets/icon/Logout.svg"/>
-      </div>
+    <div id="profile" class="profile__item" routerLink="/profile">
+      <img src="assets/icon/User-1.svg" />
+    </div>
+    <div class="profile__item" (click)="logout()">
+      <img src="assets/icon/Logout.svg" />
+    </div>
     } @else {
-      <div id="auth_profile" class="profile__item" routerLink="/auth">
-        <img src="assets/icon/User-1.svg"/>
-      </div>
+    <div id="auth_profile" class="profile__item" routerLink="/auth">
+      <img src="assets/icon/User-1.svg" />
+    </div>
     }
   </div>
 </header>

@@ -1,0 +1,29 @@
+.cart{
+display: flex;
+justify-content: space-between;
+gap: 122px;
+margin: 56px auto;
+
+&__details{
+  border: 1px solid var(--neutral-black-b100);
+  border-radius: 4px;
+  padding: 24px 16px;
+  width: 341px;
+  height: 430px;
+  display: block;
+
+  .title{
+    font-family: var(--font-family);
+font-weight: 600;
+font-size: 16px;
+color: var(--neutral-black-b900);
+  }
+
+  .finance--detail{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+}

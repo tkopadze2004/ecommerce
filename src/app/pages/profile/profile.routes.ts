@@ -6,8 +6,15 @@ import { AddressComponent } from './address/address.component';
 import { PasswordComponent } from './password/password.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CartComponent } from './cart/cart.component';
 
 export const profileRoutes: Routes = [
+  {
+    path:'cart',
+    component:CartComponent,
+    canActivate: [authGuard],
+
+  },
   {
     path: '',
     component: ProfileComponent,
@@ -37,7 +44,7 @@ export const profileRoutes: Routes = [
       {
         path: 'myProfile',
         component: MyProfileComponent,
-      },
+      }
     ],
   },
 ];

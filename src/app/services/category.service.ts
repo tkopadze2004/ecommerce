@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../core/services';
 import { map } from 'rxjs';
-import { CartComponent } from '../pages/cart/cart.component';
+import { CartComponent } from '../pages/profile/cart/cart.component';
 import { FirebaseDocument } from '../core/interfaces.ts/firebase-document';
 import { category } from '../core/interfaces.ts/category.interface';
 

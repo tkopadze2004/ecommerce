@@ -20,6 +20,8 @@
   }
 
   &--info {
+    padding-left: 120px;
+
     &__color {
       font-family: var(--font--family);
       font-weight: 500;
@@ -35,7 +37,6 @@
       flex-direction: column;
     }
 
-    padding-left: 120px;
     h1 {
       font-family: var(--font--family);
       font-weight: 700;
@@ -76,5 +77,31 @@
       text-transform: uppercase;
       color: var(--neutral-black-b500);
     }
+
+    &__add-to-cart {
+      margin-top: 50px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      // justify-content: center;
+
+      .add-to-cart--btn {
+        width: 60%;
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: var(--font--size--14);
+        // line-height: 175%;
+        color: var(--neutral-white-w900);
+      }
+    }
+  }
+
+  &--description{
+    margin-top: 120px;
+    font-family: var(--font--family);
+font-weight: 400;
+font-size: var(--font--size--14);
+line-height: 175%;
+color: var(--neutral-black-b500);
   }
 }

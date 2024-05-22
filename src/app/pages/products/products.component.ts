@@ -12,19 +12,24 @@ import { StockCheckComponent } from "../../components/stock-check/stock-check.co
 import { ColorItemComponent } from "../../components/color-item/color-item.component";
 import { SizeItemComponent } from "../../components/size-item/size-item.component";
 import { QuantityInputComponent } from "../../quantity-input/quantity-input.component";
+import { ButtonComponent } from '../../ui/button/button.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-products',
     standalone: true,
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
-    imports: [AsyncPipe, JsonPipe, BreadcrumbComponent, ReviewComponent, NgIf, StockCheckComponent, CurrencyPipe, ColorItemComponent, SizeItemComponent, QuantityInputComponent]
+    imports: [AsyncPipe, ButtonComponent,JsonPipe, BreadcrumbComponent, ReviewComponent, NgIf, StockCheckComponent, CurrencyPipe, ColorItemComponent, SizeItemComponent, QuantityInputComponent]
 })
 export class ProductsComponent {
   activatedroute = inject(ActivatedRoute);
   ProductsFacade = inject(ProductsFacade);
   categoryFacade = inject(CategoryFacade);
   colorsFacade = inject(colorsFacade);
+  sanitaizer=inject(DomSanitizer)
+
+
   quantity:number=1
   product$ = this.activatedroute.params.pipe(
     switchMap((params) =>
@@ -56,5 +61,11 @@ export class ProductsComponent {
     ),
     share()
   );
-size: any;
+
+  addToWishlist() {
+    throw new Error('Method not implemented.');
+    }
+    addToCart() {
+    throw new Error('Method not implemented.');
+    }
 }

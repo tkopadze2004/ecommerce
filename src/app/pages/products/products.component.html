@@ -30,6 +30,22 @@
       <div>Quantity</div>
       <app-quantity-input [(quantity)]="quantity" />
     </div>
+
+    <div class="product--info__add-to-cart">
+      <button alte-button block class="add-to-cart--btn" (click)="addToCart()">
+        Add to cart
+      </button>
+      <button alte-button theme="outline-icon" (click)="addToWishlist()">
+        <img src="/assets/icon/Heart.svg" />
+      </button>
+    </div>
   </div>
+</div>
+
+<div class="container product--description">
+  <h3>Detail</h3>
+  <div
+    [innerHTML]="sanitaizer.bypassSecurityTrustHtml(product.description)"
+  ></div>
 </div>
 }

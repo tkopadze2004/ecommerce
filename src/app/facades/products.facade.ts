@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { ProductService } from '../services/products.service';
-import { map, pipe } from 'rxjs';
+import { map, pipe, tap } from 'rxjs';
 import { Products } from '../core/interfaces.ts/products';
 
 @Injectable({ providedIn: 'root' })
@@ -50,13 +50,32 @@ export class ProductsFacade {
 
     )
   }
+
   getProduct(id: string) {
-    return this.productsservice.getProduct(id).pipe(
-      map((product) => {
-        return {
-          ...product,
-          id,
-        } as Products
-      })
-    )}
+    return this.productsservice.getProduct(id)
+      .pipe(
+        map((product) => {
+          return {
+            ...product,
+            id,
+          } as Products
+        })
+      )
+  }
+
+   getRelatedProducts(categoryId: string, productId: string) {
+    return this.productsservice.getRelatedProducts(categoryId)
+      .pipe(
+        map((products) => {
+          return Object.keys(products).map((key: any) => ({
+            ...products[key],
+            id: key
+          } as Products))
+        }),
+        map((products) => {
+          return products.filter((product) => product.id !== productId).slice(0, 4)
+        })
+      )
+
+  }
 }

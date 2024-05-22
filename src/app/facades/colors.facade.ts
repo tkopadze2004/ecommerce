@@ -21,12 +21,14 @@ export class colorsFacade {
     );
   }
 
-  getColorsById(id: string) {
-    return this.colorService.getColorsById(id).pipe(
-      map((color)=> ({
-        ...color,
-        id
-      }) as colors)
-    )
+
+  getColorById(id: string) {
+    return this.colorService.getColorsById(id)
+      .pipe(
+        map((color) => ({
+          ...color,
+          id
+        } as colors))
+      )
   }
 }

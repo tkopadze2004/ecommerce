@@ -104,4 +104,13 @@ font-size: var(--font--size--14);
 line-height: 175%;
 color: var(--neutral-black-b500);
   }
+
+  &--related{
+    .products{
+      margin-top:56px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 20px;
+    }
+  }
 }

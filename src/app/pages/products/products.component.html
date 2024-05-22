@@ -48,4 +48,20 @@
     [innerHTML]="sanitaizer.bypassSecurityTrustHtml(product.description)"
   ></div>
 </div>
+
+<div class="container product--related">
+  <h2>You might also like</h2>
+  <div class="products">
+
+    @for (relatedProduct of relatedProducts$ | async ; track relatedProduct.id){
+
+      <app-product-item
+        [product]="relatedProduct"
+      >
+      </app-product-item>
+
+
+      }
+  </div>
+</div>
 }

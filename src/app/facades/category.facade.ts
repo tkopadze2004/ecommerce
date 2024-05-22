@@ -21,7 +21,15 @@ export class CategoryFacade{
       )
   }
 
-  getCategoriesById(id:string){
-    return this.categoryService.getCategoriesById(id)
+  //tu ar gadaikasteboda mashin ar gamovidoda
+  getCategoryById(id: string) {
+    return this.categoryService.getCategoryById(id)
+      .pipe(
+        map(category => ({
+          ...category,
+          id
+        }) as category)
+      )
   }
+
 }

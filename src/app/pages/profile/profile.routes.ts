@@ -7,13 +7,30 @@ import { PasswordComponent } from './password/password.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { SuccessOrderComponent } from '../../components/success-order/success-order.component';
+import { FailedOrderComponent } from '../../components/failed-order/failed-order.component';
 
 export const profileRoutes: Routes = [
   {
     path:'cart',
     component:CartComponent,
     canActivate: [authGuard],
-
+  },
+  {
+    path:'checkout',
+    component:CheckoutComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path:'successOrder',
+    component:SuccessOrderComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path:'failedOrder',
+    component:FailedOrderComponent,
+    canActivate: [authGuard],
   },
   {
     path: '',

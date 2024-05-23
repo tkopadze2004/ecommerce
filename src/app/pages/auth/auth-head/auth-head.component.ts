@@ -6,9 +6,11 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './auth-head.component.html',
-  styleUrl: './auth-head.component.scss'
+  styleUrl: './auth-head.component.scss',
+  host: {
+    '[style.backgroundColor]': 'backgroundColor'
+  }
 })
 export class AuthHeadComponent {
-
-  @Input() title: string=''
-}
+  @Input() title: string = '';
+  @Input() backgroundColor: string = 'var(--neutral-white-w100)';}

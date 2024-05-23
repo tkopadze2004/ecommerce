@@ -73,15 +73,25 @@
     }
   }
 
+  // &--outline {
+  //   background: var(--neutral-white-w900);
+  //   border: 1px solid var(--neutral-black-b900);
+  //   color: var(--neutral-black-b500);
+  //   // transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; // Apply transitions
+
+  //   &:hover {
+  //     color:var(--neutral-white-w900) !important;
+  //     background: var(--neutral-black-b900);
+  //   }
+  // }
   &--outline {
     background: var(--neutral-white-w900);
-    border: 1px solid var(--neutral-black-b900);
+    border: 1px solid var(--neutral-black-b200);
     color: var(--neutral-black-b500);
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; // Apply transitions
 
     &:hover {
-      color:var(--neutral-white-w900) !important;
-      background: var(--neutral-black-b900);
+      background: var(--neutral-white-w200);
     }
   }
 

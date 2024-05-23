@@ -11,6 +11,7 @@
         (remove)="removeFromCart($event)"
         (update)="updateCart($event)"
       />
+
       } @empty {
       <div class="empty-cart">
         <img src="./assets/icon/shopping.png" width="170px" />
@@ -47,6 +48,7 @@
         alte-button
         block
         [disabled]="(sum$ | async) === 0"
+        (click) = "checkout()"
       >
         Checkout
       </button>

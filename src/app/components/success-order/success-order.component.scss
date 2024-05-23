@@ -1,0 +1,44 @@
+.success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+
+  .content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+    button {
+      margin-top: 48px;
+      border-radius: 4px;
+      padding: 12px 24px;
+      width: 196px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      img {
+        filter: brightness(40);
+      }
+    }
+    .title {
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 24px;
+      text-align: center;
+      color: var(--neutral-black-b900);
+    }
+    .message {
+      width: 379px;
+
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 175%;
+      text-align: center;
+      color: var(--neutral-black-b500);
+    }
+  }
+}

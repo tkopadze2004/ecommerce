@@ -13,17 +13,14 @@ export class AuthService extends ApiService {
   apiKey = environment.firebaseApiKey;
 
   register(params: AuthPayload): Observable<AuthResponse> {
-    return this.post<AuthResponse>(
-      `accounts:signUp?key=${this.apiKey}`,
-      params
-    );
+    return this.post<AuthResponse>(`accounts:signUp?key=${this.apiKey}`, params)
   }
 
   login(payload: AuthPayload) {
-    return this.post<AuthResponse>(
-      `accounts:signInWithPassword?key=${this.apiKey}`,
-      { ...payload, returnSecureToken: true }
-    );
+    return this.post<AuthResponse>(`accounts:signInWithPassword?key=${this.apiKey}`, {
+      ...payload,
+      returnSecureToken: true
+    })
   }
   sendOobCode(email: string) {
     return this.post(`accounts:sendOobCode?key=${this.apiKey}`, {

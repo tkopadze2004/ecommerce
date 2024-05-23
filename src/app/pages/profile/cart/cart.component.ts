@@ -5,7 +5,7 @@ import { CartFacade } from '../../../facades/cart.facade';
 import { map } from 'rxjs';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { ButtonComponent } from '../../../ui/button/button.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CartItemComponent } from '../../../components/cart-item/cart-item.component';
 import { Products } from '../../../core/interfaces.ts/products';
 
@@ -26,7 +26,7 @@ import { Products } from '../../../core/interfaces.ts/products';
 })
 export class CartComponent {
   cartFacade = inject(CartFacade);
-
+  router = inject(Router);
   carts$ = this.cartFacade.cart$;
 
   sum$ = this.cartFacade.cart$.pipe(
@@ -37,6 +37,9 @@ export class CartComponent {
     )
   );
 
+  checkout() {
+    this.router.navigate(['/profile/checkout']);
+  }
   updateCart($event: { product: Products; quantity: number }) {
     this.cartFacade.UpdateToCart($event.product, $event.quantity);
   }

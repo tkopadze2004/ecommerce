@@ -25,7 +25,7 @@ export class AuthFacade {
     return this.storageService.getItem('refreshToken');
   }
   get user() {
-    return this.storageService.getItem('user');
+    return this.storageService.getItem('user')
   }
 
   register(payload: AuthPayload) {
@@ -33,7 +33,7 @@ export class AuthFacade {
       tap((res) => {
         this.storageService.setItem('token', res.idToken);
         this.storageService.setItem('refreshtoken', res.refreshToken);
-        this.storageService.setItem('User', {
+        this.storageService.setItem('user', {
           email: res.email,
           localid: res.localId,
         });
@@ -46,7 +46,7 @@ export class AuthFacade {
       tap((res) => {
         this.storageService.setItem('token', res.idToken);
         this.storageService.setItem('refreshtoken', res.refreshToken);
-        this.storageService.setItem('User', {
+        this.storageService.setItem('user', {
           email: res.email,
           localid: res.localId,
         });
@@ -77,7 +77,7 @@ export class AuthFacade {
       tap((res) => {
         this.storageService.setItem('token', res.idToken);
         this.storageService.setItem('refreshtoken', res.refreshToken);
-        this.storageService.setItem('User', {
+        this.storageService.setItem('user', {
           email: res.email,
           localid: res.localId,
         });

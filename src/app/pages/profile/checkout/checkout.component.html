@@ -1,1 +1,77 @@
-<p>checkout works!</p>
+<app-auth-head title="Checkout" />
+
+<div class="container checkout">
+  <div class="checkout__list">
+    <h4>Shipping Address</h4>
+
+    <form [formGroup]="form">
+      <div class="one_column">
+        <app-input label="Street Address" formControlName="street" />
+      </div>
+      <div class="two_column">
+        <app-input label="City" formControlName="city" />
+        <app-input label="State" formControlName="state" />
+      </div>
+      <div class="two_column">
+        <app-input label="Zip Code" formControlName="zipCode" />
+        <app-input label="Country" formControlName="country" />
+      </div>
+      <div class="two_column personal-info">
+        <app-input label="Email" formControlName="email" />
+        <app-input label="Full name" formControlName="fullName" />
+      </div>
+    </form>
+  </div>
+  <div class="checkout__details">
+    <div class="title">Order Summary</div>
+    <div class="in-cart">
+      <div class="in-cart__images">
+        @for (item of carts$ |async; track item) {
+        <img [src]="item.image" />
+        }
+      </div>
+
+      <button
+        class="in-cart__edit"
+        alte-button
+        theme="outline"
+        routerLink="/profile/cart"
+      >
+        Edit Cart
+      </button>
+    </div>
+    <div class="finance--detail">
+      <app-key-value
+        key="Subtotal"
+        [value]="(sum$ | async) || 0 | currency : 'USD' : '$'"
+      />
+      <app-key-value key="Shipping: " value="Free" />
+      <app-key-value
+        key="tax"
+        [value]="
+          ((sum$ | async) || 0) * cartFacade.cartFee | currency : 'USD' : '$'
+        "
+      />
+      <div class="divider"></div>
+      <app-key-value
+        key="Total"
+        [value]="(sum$ | async) || 0 | currency : 'USD' : '$'"
+      />
+
+      <button
+        class="checkout__checkout"
+        alte-button
+        block
+        [disabled]="(sum$ | async) === 0"
+        (click)="checkout()"
+      >
+        Place Order
+      </button>
+      <div class="checkout__continue--shopping">
+        <a routerLink="/" class="checkout__continue--shopping--link">
+          Continue Shopping</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

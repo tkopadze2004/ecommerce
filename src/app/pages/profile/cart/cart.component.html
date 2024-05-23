@@ -1,14 +1,60 @@
 <app-auth-head title="My Cart" />
 
 <div class="container cart">
-  <div class="cart__list">list</div>
+  <div class="cart__list">
+    <h4>Your cart</h4>
+    <div class="divider"></div>
+    <div class="cart__product">
+      @for(cart of carts$ | async ;track cart){
+      <app-cart-item
+        [product]="cart"
+        (remove)="removeFromCart($event)"
+        (update)="updateCart($event)"
+      />
+      } @empty {
+      <div class="empty-cart">
+        <img src="./assets/icon/shopping.png" width="170px" />
+       <span>Oops! Your cart is empty</span>
+        <div class="strat-shopping">
+          Start shopping from <a routerLink="/ ">here</a>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
   <div class="cart__details">
     <div class="title">Order Summary</div>
-<div class="finance--detail">
-<app-key-value key="Subtotal" value="90.00"/>
-<app-key-value key="Shipping: " value="Free"/>
-<app-key-value key="tac" value=" 3.00"/>
-</div>
-  </div>
+    <div class="finance--detail">
+      <app-key-value
+        key="Subtotal"
+        [value]="(sum$ | async) || 0 | currency : 'USD' : '$'"
+      />
+      <app-key-value key="Shipping: " value="Free" />
+      <app-key-value
+        key="tax"
+        [value]="
+          ((sum$ | async) || 0) * cartFacade.cartFee | currency : 'USD' : '$'
+        "
+      />
+      <div class="divider"></div>
+      <app-key-value
+        key="Total"
+        [value]="(sum$ | async) || 0 | currency : 'USD' : '$'"
+      />
 
+      <button
+        class="cart__checkout"
+        alte-button
+        block
+        [disabled]="(sum$ | async) === 0"
+      >
+        Checkout
+      </button>
+      <div class="cart__continue--shopping">
+        <a routerLink="/" class="cart__continue--shopping--link">
+          Continue Shopping</a
+        >
+      </div>
+    </div>
+  </div>
 </div>

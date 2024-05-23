@@ -9,6 +9,7 @@ export class CartFacade {
   cart = new BehaviorSubject<Products[]> ([]);
   cart$ = this.cart.asObservable();
 
+  cartFee=0.18
   constructor(){
     this.cart.next(this.getFromLocalStorage())
   }

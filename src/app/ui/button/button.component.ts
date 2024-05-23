@@ -8,7 +8,7 @@ import { Component, Input, booleanAttribute } from '@angular/core';
     <ng-content/>
   `,
   host: {
-    class: 'alte-button',
+    class: 'button[alte-button] ,a[alte-button]',
     '[class.alte-button--default]': 'size === "default"',
     '[class.alte-button--small]': 'size === "small"',
     '[class.alte-button--primary]': 'theme === "primary"',

@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class KeyValueComponent {
 @Input({required:true}) key!:string
-@Input({required:true}) value!:string
+@Input({required:true}) value!:any
 }

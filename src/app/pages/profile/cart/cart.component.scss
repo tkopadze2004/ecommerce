@@ -35,6 +35,13 @@
   }
 
   &__checkout {
+    height: 44px;
+    background: var(--neutral-black-b900);
+    color: var(--neutral-white-w900);
+
+    &:hover {
+      background: var(--neutral-black-b800);
+    }
     margin-top: 32px;
   }
   &__continue--shopping {
@@ -96,9 +103,8 @@
       margin-left: 5px;
       color: grey;
     }
-    :hover{
+    :hover {
       color: red;
     }
-
   }
 }

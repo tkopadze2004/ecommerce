@@ -25,6 +25,6 @@ import { Component, Input, booleanAttribute } from '@angular/core';
 export class ButtonComponent {
   @Input() size: 'default' | 'small' = 'default'
   @Input() theme: 'primary' | 'outline'  |'outlineblack'|'outlinesm' | 'icon' | 'outline-icon' = 'primary'
-  @Input() disabled :boolean=false
+  @Input() disabled?: boolean
   @Input ({transform:booleanAttribute}) block : boolean=false
 }

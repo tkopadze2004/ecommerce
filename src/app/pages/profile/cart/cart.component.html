@@ -45,8 +45,6 @@
 
       <button
         class="cart__checkout"
-        alte-button
-        block
         [disabled]="(sum$ | async) === 0"
         (click) = "checkout()"
       >

@@ -95,6 +95,13 @@ export class CheckoutComponent implements OnDestroy {
         this.router.navigate(['profile/successOrder'])
       });
 
+     if(order.product.length===0){
+      this.router.navigate(['profile/failedOrder'])
+
+      return
+
+     }
+
   }
   removeFromCart($event: Event) {
     throw new Error('Method not implemented.');

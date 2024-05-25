@@ -85,6 +85,7 @@ export class CategoriesComponent {
     });
   }
 
+  
   selectColor(color: colors) {
     this.selectedColor = color.id;
     this.router.navigate([], {

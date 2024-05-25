@@ -39,7 +39,7 @@ export class CheckoutComponent implements OnDestroy {
   cartFacade = inject(CartFacade);
   orderFacade = inject(orderFacade);
   authFacade = inject(AuthFacade);
-  router=inject(Router)
+  router = inject(Router);
 
   public total: number = 0;
   sub$ = new Subject();
@@ -74,11 +74,10 @@ export class CheckoutComponent implements OnDestroy {
       return;
     }
 
-
     const order: order = {
       userId: this.authFacade.user.id,
       user: this.authFacade.user,
-      product: this.cartFacade.allProducts,
+      products: this.cartFacade.allProducts,
       total: this.total,
       status: 'pending',
       createdAt: new Date(),
@@ -92,16 +91,14 @@ export class CheckoutComponent implements OnDestroy {
         console.log(res);
 
         this.cartFacade.setToLocalStorage([]);
-        this.router.navigate(['profile/successOrder'])
+        this.router.navigate(['profile/successOrder']);
       });
 
-     if(order.product.length===0){
-      this.router.navigate(['profile/failedOrder'])
+    if (order.products.length === 0) {
+      this.router.navigate(['profile/failedOrder']);
 
-      return
-
-     }
-
+      return;
+    }
   }
   removeFromCart($event: Event) {
     throw new Error('Method not implemented.');

@@ -11,6 +11,7 @@ import { Component, Input, booleanAttribute } from '@angular/core';
     class: 'button[alte-button] ,a[alte-button]',
     '[class.alte-button--default]': 'size === "default"',
     '[class.alte-button--small]': 'size === "small"',
+    '[class.alte-button--extra-small]': 'size === "extra-small"',
     '[class.alte-button--primary]': 'theme === "primary"',
     '[class.alte-button--outline]': 'theme === "outline"',
     '[class.alte-button--icon]': 'theme === "icon"',
@@ -23,7 +24,7 @@ import { Component, Input, booleanAttribute } from '@angular/core';
   }
 })
 export class ButtonComponent {
-  @Input() size: 'default' | 'small' = 'default'
+  @Input() size: 'default' | 'small' |'extra-small' = 'default'
   @Input() theme: 'primary' | 'outline'  |'outlineblack'|'outlinesm' | 'icon' | 'outline-icon' = 'primary'
   @Input() disabled?: boolean
   @Input ({transform:booleanAttribute}) block : boolean=false

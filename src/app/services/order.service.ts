@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../core/services';
 import { order } from '../core/interfaces.ts/order.interface';
+import { FirebaseDocument } from '../core/interfaces.ts/firebase-document';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService extends ApiService {
 
-  getOrders(){
-    return this.get('orders.json')
+  getOrders(userId:string){
+    return this.get<FirebaseDocument<order>[]>('orders.json',{orderBy:'"userId"',equalTo:`"${userId}"`})
   }
   getOrdersByid(id:string){
-    return this.get(`orders/${id}.json`)
+    return this.get<FirebaseDocument<order>>(`orders/${id}.json`)
   }
 
   createOrder(order:order){

@@ -2,14 +2,17 @@ import { Data } from '@angular/router';
 import { Products } from './products';
 import { User } from './user.interface';
 
+export type status= 'pending' | 'complited' | 'cancled'
+
 export interface order {
   id?:string
   userId: string ;
   user: User;
-  product: Products[];
+  products: Products[];
+
   total: number;
   status: 'pending' | 'complited' | 'cancled';
-  createdAt: Data;
+  createdAt: Date;
   shipping: {
     street: string;
     city: string;

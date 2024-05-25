@@ -1,9 +1,39 @@
 <div class="title">
   Orders
 </div>
-@for(item of profile; track item){
-
-<app-base
+<div>
+<table class="table">
+<tbody>
+  @for(order of orders$ | async; track order.id) {
+    <tr>
+      <td>
+        {{ order.user.email }}
+      </td>
+      <td>
+        {{ order.total | currency:'USD':'$'}}
+      </td>
+      <td>
+        {{ order.createdAt | date:'dd/MM/yyyy HH:mm' }}
+      </td>
+      <td>
+        {{ order.status | order }}
+      </td>
+      <td>
+        <button alte-button size="extra-small" [routerLink]="['/profile', 'orders', order.id]">View</button>
+      </td>
+    </tr>
+  } @empty {
+    <tr>
+      <td>
+        No orders
+      </td>
+    </tr>
+  }
+</tbody>
+</table>
+</div>
+ <!-- <app-order-item [order]="order"/> -->
+<!-- <app-base
 [img]="item.img"
 [description]="item.description"
 [orderDate]="item.orderDate"
@@ -11,5 +41,5 @@
 [additionalInfo]="item.additionalInfo"
 [buttonText]="item.buttonText"
 [showBorder]="true"
-/>
-}
+/> -->
+

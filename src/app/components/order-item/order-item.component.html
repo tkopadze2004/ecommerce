@@ -1,0 +1,19 @@
+<div class="cart--item">
+  <div class="cart--item__poster"><img [src]="product.image" /></div>
+  <div class="cart--item__info">
+    <div class="title">{{ product.name }}</div>
+    <div class="color_size">
+
+     <span>Color:</span>
+         <div class="color_round" [style.background-color]="product.color.name" > </div>
+      <div> - </div>
+      <div>
+        Size
+          <span class="uppercase">{{product.size}} </span>
+      </div>
+    </div>
+  </div>
+  <div class="cart--item__price"> {{product.price  |  currency : 'USD' : '$'}} </div>
+
+
+</div>

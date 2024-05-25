@@ -1,0 +1,28 @@
+@if( orders$ |async ; as order){
+<div class="order">
+  <div>
+    <h2>Order Datails</h2>
+    <div class="details">
+      <app-key-value  key="Order ID" [value]="order.id" />
+      <app-key-value
+        key="Order Date"
+        [value]="order.createdAt | date : 'dd/MM/yyyy  hh:mm'"
+      />
+      <app-key-value key="Order Status" [value]="order.status | order" />
+      <app-key-value
+        key="Total"
+        [value]="order.total | currency : 'USD' : '$'"
+      />
+    </div>
+  </div>
+  <div class="order__products">
+    <h2>Products</h2>
+    <div class="products">
+      @for (product of order.products; track product.id) {
+      <app-order-item [product]="product" />
+      }
+    </div>
+  </div>
+</div>
+
+}

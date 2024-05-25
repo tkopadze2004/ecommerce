@@ -1,15 +1,24 @@
-import { Component } from '@angular/core';
-// import { BaseComponent } from '../base/base.component';
-import { PROFILE } from '../../../data/profile';
-import { BaseComponent } from '../base/base.component';
+import { Component, inject } from '@angular/core';
+import { OrderItemComponent } from '../../../components/order-item/order-item.component';
+import { orderFacade } from '../../../facades/order.facade';
+import { AsyncPipe, CurrencyPipe, DatePipe } from '@angular/common';
+import { OrderPipe } from '../../../core/pipes/order.pipe';
+import { RouterLink } from '@angular/router';
+import { ButtonComponent } from '../../../ui/button/button.component';
 
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [BaseComponent],
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss', '../../profile/profile.style.scss'],
+  imports: [OrderItemComponent, AsyncPipe,DatePipe,CurrencyPipe,OrderPipe,RouterLink,ButtonComponent],
 })
 export class OrdersComponent {
-  profile = PROFILE;
+  // profile = PROFILE;
+
+  orderfacade = inject(orderFacade);
+  
+
+  orders$ = this.orderfacade.getOrders()
+
 }

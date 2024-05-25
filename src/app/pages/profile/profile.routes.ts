@@ -5,7 +5,6 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { AddressComponent } from './address/address.component';
 import { PasswordComponent } from './password/password.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SuccessOrderComponent } from '../../components/success-order/success-order.component';
@@ -44,7 +43,7 @@ export const profileRoutes: Routes = [
       },
       {
         path: 'orders',
-        component: OrdersComponent,
+       loadChildren :  () =>  import ( './orders/order.route' ).then(m=> m.orderRoutes)
       },
       {
         path: 'wishlist',

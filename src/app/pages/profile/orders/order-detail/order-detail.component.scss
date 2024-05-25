@@ -1,0 +1,23 @@
+.order {
+  h2 {
+    text-decoration: rgb(139, 139, 139) underline;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--neutral-black-b600);
+    margin-bottom: 30px;
+  }
+  .details {
+.key-value{
+  color: red !important;
+}
+  }
+  &__products {
+    margin-top: 40px;
+
+    .products {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}

@@ -6,13 +6,5 @@ export const PROFILE = [{
   additionalInfo: 'Processing',
   buttonText: 'View item',
 }
-,
-{
-  img: '/assets/images/Image2.png',
-  description: 'Monochromatic Wardrobe',
-  orderDate: 'Ordered on: 9 march 2023',
-  extraContent: '$27.00',
-  additionalInfo: 'Completed',
-  buttonText: 'View item',
-}
+
 ];

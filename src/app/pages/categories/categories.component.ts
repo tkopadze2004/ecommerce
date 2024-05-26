@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CategoryFacade } from '../../facades/category.facade';
 import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,9 +10,8 @@ import { ColorItemComponent } from '../../components/color-item/color-item.compo
 import { SIZE, SIZES } from '../../core/types/size.type';
 import { ProductItemComponent } from '../../components/product-item/product-item.component';
 import { ProductsFacade } from '../../facades/products.facade';
-import { Subject, switchMap, takeUntil, tap } from 'rxjs';
+import {  switchMap, tap } from 'rxjs';
 import { category } from '../../core/interfaces.ts/category.interface';
-import { Products } from '../../core/interfaces.ts/products';
 import { colors } from '../../core/interfaces.ts/colors.interface';
 import { SizeItemComponent } from '../../components/size-item/size-item.component';
 
@@ -85,7 +84,7 @@ export class CategoriesComponent {
     });
   }
 
-  
+
   selectColor(color: colors) {
     this.selectedColor = color.id;
     this.router.navigate([], {

@@ -7,7 +7,6 @@
   gap: 16px;
 
   &__poster {
-
     border-radius: 4px;
     padding: 0px 11px;
     width: 80px;
@@ -28,7 +27,6 @@
     width: 100%;
     gap: 6px;
     margin-left: 16px;
-
 
     .title {
       font-family: var(--font--family);
@@ -56,17 +54,16 @@
       }
     }
   }
-  &__price{
+  &__price {
     margin-left: auto;
     font-family: var(--font-family);
-font-weight: 500;
-font-size: var(--font--size--14);
-line-height: 175%;
-text-align: center;
-color: var(--neutral-black-b900);
+    font-weight: 500;
+    font-size: var(--font--size--14);
+    line-height: 175%;
+    text-align: center;
+    color: var(--neutral-black-b900);
   }
-  &__quantity{
+  &__quantity {
     margin-left: 16px;
-
   }
 }

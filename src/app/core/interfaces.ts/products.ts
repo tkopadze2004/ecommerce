@@ -14,7 +14,6 @@ export interface Products {
   size: SIZE;
   review: review,
   categoryId: string;
-  // cover?: string;
   category: category;
   color: colors;
   quantity: number;

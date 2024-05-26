@@ -11,14 +11,17 @@ import { ButtonComponent } from '../../../ui/button/button.component';
   standalone: true,
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss', '../../profile/profile.style.scss'],
-  imports: [OrderItemComponent, AsyncPipe,DatePipe,CurrencyPipe,OrderPipe,RouterLink,ButtonComponent],
+  imports: [
+    OrderItemComponent,
+    AsyncPipe,
+    DatePipe,
+    CurrencyPipe,
+    OrderPipe,
+    RouterLink,
+    ButtonComponent,
+  ],
 })
 export class OrdersComponent {
-  // profile = PROFILE;
-
   orderfacade = inject(orderFacade);
-  
-
-  orders$ = this.orderfacade.getOrders()
-
+  orders$ = this.orderfacade.getOrders();
 }

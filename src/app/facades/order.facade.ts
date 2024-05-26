@@ -10,26 +10,27 @@ export class orderFacade {
   authFacade = inject(AuthFacade);
   getOrders() {
     return this.orderService.getOrders(this.authFacade.user.id).pipe(
-
-        map((order) => {
-          return Object.keys(order).map(
-            (key: any) =>
-              ({
-                ...order[key],
-                id: key,
-              } as order)
-          );
-        })
-      );
-
+      map((order) => {
+        return Object.keys(order).map(
+          (key: any) =>
+            ({
+              ...order[key],
+              id: key,
+            } as order)
+        );
+      })
+    );
   }
   getOrderByid(id: string) {
     return this.orderService.getOrdersByid(id).pipe(
-      map((order) => ({
-        ...order,
-        id
-      } as order))
-    )
+      map(
+        (order) =>
+          ({
+            ...order,
+            id,
+          } as order)
+      )
+    );
   }
 
   createOrder(order: order) {

@@ -28,7 +28,7 @@ import { AlertComponent } from '../../../components/alert/alert.component';
     FormsModule,
     InputComponent,
     ButtonComponent,
-    AlertComponent
+    AlertComponent,
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss', '../auth.style.scss'],
@@ -75,13 +75,12 @@ export class RegisterComponent implements OnDestroy {
         })
       )
       .subscribe((res) => {
-    if(res){
-      this.successMessagge='you are registered'
-      setTimeout(() => {
-    this.router.navigate(['/auth'])
-      }, 2000);
-    }
-
+        if (res) {
+          this.successMessagge = 'you are registered';
+          setTimeout(() => {
+            this.router.navigate(['/auth']);
+          }, 2000);
+        }
       });
   }
   ngOnDestroy(): void {

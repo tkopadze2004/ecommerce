@@ -1,7 +1,6 @@
 export interface AuthPayload {
   email: string;
   password: string;
-  // refreshToken:boolean
 }
 export interface AuthResponse {
   idToken: string;

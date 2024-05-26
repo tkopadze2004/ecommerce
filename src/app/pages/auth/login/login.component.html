@@ -1,10 +1,9 @@
 <app-auth-head title="Login" />
 
 <div class="cont">
-   @if(errorMessage){
+  @if(errorMessage){
   <app-alert type="error" [message]="errorMessage" />
-  }
-  @if(successMessagge){
+  } @if(successMessagge){
   <app-alert type="success" [message]="successMessagge" />
   }
   <form [formGroup]="form">
@@ -20,7 +19,7 @@
     </div>
 
     <div class="auth-button">
-      <button alte-button block (click)="submit()" >Sign in</button>
+      <button alte-button block (click)="submit()">Sign in</button>
     </div>
   </form>
 
@@ -28,4 +27,3 @@
     Don't have an account? <a [routerLink]="['/auth/register']"> Sign up</a>
   </div>
 </div>
-{{ form.value | json }}

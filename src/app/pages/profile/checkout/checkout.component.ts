@@ -88,8 +88,6 @@ export class CheckoutComponent implements OnDestroy {
       .createOrder(order)
       .pipe(takeUntil(this.sub$))
       .subscribe((res) => {
-        console.log(res);
-
         this.cartFacade.setToLocalStorage([]);
         this.router.navigate(['profile/successOrder']);
       });
@@ -100,9 +98,7 @@ export class CheckoutComponent implements OnDestroy {
       return;
     }
   }
-  removeFromCart($event: Event) {
-    throw new Error('Method not implemented.');
-  }
+
   ngOnDestroy(): void {
     this.sub$.next(null);
     this.sub$.complete();

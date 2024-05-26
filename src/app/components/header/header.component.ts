@@ -6,7 +6,7 @@ import { CdkMenuTrigger } from '@angular/cdk/menu';
 import { CategoryFacade } from '../../facades/category.facade';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { CartFacade } from '../../facades/cart.facade';
-import { map, reduce } from 'rxjs';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-header',

@@ -5,10 +5,7 @@ import {
   Observable,
   map,
   mergeMap,
-  share,
-  shareReplay,
   switchMap,
-  tap,
 } from 'rxjs';
 import {
   AsyncPipe,
@@ -99,11 +96,9 @@ export class ProductsComponent {
       this.ProductsFacade.getRelatedProducts(product.categoryId, product.id)
     )
   );
-  // ragaca$ = this.relatedProducts$.subscribe((res) => console.log(res));
 
   addToWishlist(product: Products) {
     this.wishlistfacade.createWishlist(product).subscribe((res) => {
-      console.log(res);
       alert('product added in wishlist');
     });
   }

@@ -12,7 +12,6 @@
             [category]="category"
           />
           }
-
         </div>
       </app-filter-card>
 
@@ -42,25 +41,8 @@
     </div>
   </div>
   <div class="category--content">
-    <!-- <div class="active--filters">
-      <div class="active--filters--title">Applied Filters:</div>
-      <div class="active--filters--cont">
-        <div class="active--filters--cont--category">
-          Perfume
-          <img src="assets/icon/X.svg" />
-        </div>
-        <div class="active--filters--cont--size">
-          Size: M
-          <img src="assets/icon/X.svg" />
-        </div>
-      </div>
-    </div> -->
     <div class="product-info">
-      <div class="product-info--result">Showing  results :</div>
-      <!-- <div class="product-info--dropdown">
-        Sort by
-        <img src="assets/icon/dropdown.svg" />
-      </div> -->
+      <div class="product-info--result">Showing results :</div>
     </div>
     @if(products$ | async ; as product){
     <div class="products">

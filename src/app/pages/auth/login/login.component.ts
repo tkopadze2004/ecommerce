@@ -26,30 +26,29 @@ import { Subject, catchError, takeUntil, throwError } from 'rxjs';
     JsonPipe,
     ButtonComponent,
     RouterLink,
-    AlertComponent
-    // AlertComponent,
+    AlertComponent,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss', '../auth.style.scss'],
 })
-export class LoginComponent implements OnDestroy{
+export class LoginComponent implements OnDestroy {
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
   });
-   router =inject(Router)
+  router = inject(Router);
   authFacade = inject(AuthFacade);
-  errorMessage:string|null= null
-  successMessagge: string | null=null
-  sub$=new Subject()
+  errorMessage: string | null = null;
+  successMessagge: string | null = null;
+  sub$ = new Subject();
   submit() {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
       return;
     }
 
-    this.errorMessage= null
-    this.successMessagge =null
+    this.errorMessage = null;
+    this.successMessagge = null;
     const { email, password } = this.form.value as {
       email: string;
       password: string;
@@ -62,27 +61,28 @@ export class LoginComponent implements OnDestroy{
       password,
     };
 
-    this.authFacade.login(payload)
-    .pipe(
-      takeUntil(this.sub$),
+    this.authFacade
+      .login(payload)
+      .pipe(
+        takeUntil(this.sub$),
 
-      catchError(({error})=>{
-        this.errorMessage=error.error.message
-        return throwError(()=>error.error.message)
-      })
-    )
-    .subscribe((res) => {
-      console.log(res);
-      if(res){
-        this.successMessagge='login successful'
-        setTimeout(() => {
-        this.router.navigate(['/'])
-        }, 2000);
-      }
-    });
+        catchError(({ error }) => {
+          this.errorMessage = error.error.message;
+          return throwError(() => error.error.message);
+        })
+      )
+      .subscribe((res) => {
+        console.log(res);
+        if (res) {
+          this.successMessagge = 'login successful';
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 2000);
+        }
+      });
   }
   ngOnDestroy(): void {
-    this.sub$.next(null)
-    this.sub$.complete()
+    this.sub$.next(null);
+    this.sub$.complete();
   }
 }

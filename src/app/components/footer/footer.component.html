@@ -17,13 +17,10 @@
     <div class="footer__center">
       <div class="footer__center">
         @for(menu of footermenu ; track menu){
-          <app-footer-link-item
-          [title]="menu.title"
-          [links]="menu.links"
-          />
+        <app-footer-link-item [title]="menu.title" [links]="menu.links" />
         }
-        </div>
       </div>
+    </div>
 
     <div class="footer__right">
       <div class="footer__title">ACCEPTED PAYMENTS</div>

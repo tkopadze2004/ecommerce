@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output, booleanAttribute } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  booleanAttribute,
+} from '@angular/core';
 import { category } from '../../core/interfaces.ts/category.interface';
 
 @Component({
@@ -9,23 +15,23 @@ import { category } from '../../core/interfaces.ts/category.interface';
   styleUrl: './filter-card-checkbox-item.component.scss',
 })
 export class FilterCardCheckboxItemComponent {
-  @Input() category : category = {} as category;
+  @Input() category: category = {} as category;
   @Input({
-    transform:booleanAttribute
-  }) active:boolean=false
-@Output() check :EventEmitter<{
-  category:category,
-  checked:boolean
-}>=new EventEmitter<{
-  category:category,
-  checked:boolean
-}>
+    transform: booleanAttribute,
+  })
+  active: boolean = false;
+  @Output() check: EventEmitter<{
+    category: category;
+    checked: boolean;
+  }> = new EventEmitter<{
+    category: category;
+    checked: boolean;
+  }>();
 
-
-checked($event:Event){
-this.check.emit({
-  category:this.category,
-  checked:($event.target as HTMLInputElement).checked
-})
-}
+  checked($event: Event) {
+    this.check.emit({
+      category: this.category,
+      checked: ($event.target as HTMLInputElement).checked,
+    });
+  }
 }

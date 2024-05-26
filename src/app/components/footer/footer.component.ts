@@ -7,8 +7,8 @@ import { FOOTER_MENU } from '../../data/footer-menu';
   standalone: true,
   imports: [FooterLinkItemComponent],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-footermenu=FOOTER_MENU
+  footermenu = FOOTER_MENU;
 }

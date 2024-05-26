@@ -6,10 +6,9 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './footer-link-item.component.html',
-  styleUrl: './footer-link-item.component.scss'
+  styleUrl: './footer-link-item.component.scss',
 })
 export class FooterLinkItemComponent {
-
-  @Input() title  : string =''
-  @Input() links: {title:string; url:string}[]=[]
+  @Input() title: string = '';
+  @Input() links: { title: string; url: string }[] = [];
 }

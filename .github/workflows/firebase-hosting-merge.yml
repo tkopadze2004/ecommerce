@@ -15,7 +15,7 @@ jobs:
       - run: 'echo "DOTENV_KEY_PRODUCTION=$DOTENV_KEY" > .env.keys'
         env:
           DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
-      - run: dotenvx decrypt
+      - run: dotenvx vault decrypt
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:

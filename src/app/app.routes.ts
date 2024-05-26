@@ -4,6 +4,7 @@ import { LayoutComponent } from './components';
 import { HomeComponent } from './pages/home/home.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { AdditionalPageComponent } from './components/additional-page/additional-page.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
         component:ProductsComponent
       },
       {
+        path:'additionalPage',
+        component:AdditionalPageComponent
+      },
+      {
         path: 'profile',
         loadChildren: () => import('./pages/profile/profile.routes').then(m => m.profileRoutes),
       }
@@ -34,6 +39,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/'
+    redirectTo: '/additionalPage'
   }
 ];

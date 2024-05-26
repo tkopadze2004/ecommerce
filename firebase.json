@@ -1,17 +1,13 @@
 {
-  "apiKey": "AIzaSyAmDLKNXWag2JLZEFwi-MmqKWYIP7dSCj8",
-  "authDomain": "alte-ecommerce-15c99.firebaseapp.com",
-  "databaseURL": "https://alte-ecommerce-15c99-default-rtdb.europe-west1.firebasedatabase.app",
-  "projectId": "alte-ecommerce-15c99",
-  "storageBucket": "alte-ecommerce-15c99.appspot.com",
-  "messagingSenderId": "382148232817",
-  "appId": "1:382148232817:web:6e88ceed81f9db3e8f7dd0",
   "hosting": {
-    "public": "dist/ecommerce/browser",
+    "source": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "frameworksBackend": {
+      "region": "europe-west1"
+    }
   }
 }

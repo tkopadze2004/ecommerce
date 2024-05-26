@@ -1,3 +1,30 @@
-<app-hero-banner/>
-<app-features/>
-<app-best-seller/>
+<app-hero-banner />
+<app-features />
+<app-best-seller title="Best Selling" shop="shop now" />
+<div class="promo">
+  <div class="container promo--container">
+    <div class="promo__content">
+      <div class="promo__content--title">
+        <h2>Browse Our Fashion Paradise!</h2>
+      </div>
+      <div class="promo__content--description">
+        <p>
+          Step into a world of style and explore our diverse collection of
+          clothing categories.
+        </p>
+      </div>
+
+      <button
+        alte-button
+        class="promo__content--button"
+        routerLink="/categories"
+      >
+        Start Browsing<img src="./assets/icon/rightarrow.svg" />
+      </button>
+    </div>
+    <div class="promo__image">
+      <img src="./assets/images/categoryimg.png" />
+    </div>
+  </div>
+</div>
+<app-best-seller title="LATEST PRODUCTS" />

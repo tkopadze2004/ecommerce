@@ -32,10 +32,15 @@
     </div>
 
     <div class="product--info__add-to-cart">
-      <button alte-button block class="add-to-cart--btn" (click)="addToCart(product)">
+      <button
+        alte-button
+        block
+        class="add-to-cart--btn"
+        (click)="addToCart(product)"
+      >
         Add to cart
       </button>
-      <button alte-button theme="outline-icon" (click)="addToWishlist()">
+      <button alte-button theme="outline-icon" (click)="addToWishlist(product)">
         <img src="/assets/icon/Heart.svg" />
       </button>
     </div>
@@ -52,16 +57,11 @@
 <div class="container product--related">
   <h2>You might also like</h2>
   <div class="products">
-
     @for (relatedProduct of relatedProducts$ | async ; track relatedProduct.id){
 
-      <app-product-item
-        [product]="relatedProduct"
-      >
-      </app-product-item>
+    <app-product-item [product]="relatedProduct"> </app-product-item>
 
-
-      }
+    }
   </div>
 </div>
 }

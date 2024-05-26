@@ -7,13 +7,22 @@ import { tap } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class ProductService extends ApiService {
   getProducts() {
-    return this.get<FirebaseDocument<Products>[]>('products.json')
+    return this.get<FirebaseDocument<Products>[]>('products.json');
   }
-  getProduct(id: string)  {
+  getProduct(id: string) {
     return this.get<FirebaseDocument<Products>>(`products/${id}.json`);
   }
 
-  getRelatedProducts(categoryId:string) {
-    return this.get<FirebaseDocument<Products>[]>('products.json',{orderBy:'"categoryId"',equalTo:`"${categoryId}"`})
+  getRelatedProducts(categoryId: string) {
+    return this.get<FirebaseDocument<Products>[]>('products.json', {
+      orderBy: '"categoryId"',
+      equalTo: `"${categoryId}"`,
+    });
+  }
+  bestSelling(categoryId: string) {
+    return this.get<FirebaseDocument<Products>[]>('products.json', {
+      orderBy: '"categoryId"',
+      equalTo: `"${categoryId}"`,
+    });
   }
 }

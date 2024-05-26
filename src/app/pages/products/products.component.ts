@@ -1,7 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/products.service';
-import { Observable, map, mergeMap, share, shareReplay, switchMap, tap } from 'rxjs';
+import {
+  Observable,
+  map,
+  mergeMap,
+  share,
+  shareReplay,
+  switchMap,
+  tap,
+} from 'rxjs';
 import {
   AsyncPipe,
   CurrencyPipe,
@@ -23,6 +31,7 @@ import { Products } from '../../core/interfaces.ts/products';
 import { ProductItemComponent } from '../../components/product-item/product-item.component';
 import { QuantityInputComponent } from '../../components/quantity-input/quantity-input.component';
 import { CartFacade } from '../../facades/cart.facade';
+import { wishlistFacade } from '../../facades/wishlist.facade';
 
 @Component({
   selector: 'app-products',
@@ -52,6 +61,7 @@ export class ProductsComponent {
   cartFacade = inject(CartFacade);
   colorsFacade = inject(colorsFacade);
   sanitaizer = inject(DomSanitizer);
+  wishlistfacade = inject(wishlistFacade);
 
   quantity: number = 1;
   product$: Observable<Products> = this.activatedroute.params.pipe(
@@ -82,8 +92,7 @@ export class ProductsComponent {
           )
         )
     )
-  )
-
+  );
 
   relatedProducts$: Observable<Products[]> = this.product$.pipe(
     switchMap((product) =>
@@ -92,8 +101,11 @@ export class ProductsComponent {
   );
   // ragaca$ = this.relatedProducts$.subscribe((res) => console.log(res));
 
-  addToWishlist() {
-    throw new Error('Method not implemented.');
+  addToWishlist(product: Products) {
+    this.wishlistfacade.createWishlist(product).subscribe((res) => {
+      console.log(res);
+      alert('product added in wishlist');
+    });
   }
   addToCart(product: Products) {
     this.cartFacade.addToCart(product, this.quantity);

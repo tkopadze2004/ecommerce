@@ -1,3 +1,17 @@
 .title {
   margin-bottom: 56px;
 }
+.wishlist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+
+  &__item {
+    position: relative;
+    .delete-wishlist {
+      position: absolute;
+      top: 0;
+      right: -10px;
+    }
+  }
+}

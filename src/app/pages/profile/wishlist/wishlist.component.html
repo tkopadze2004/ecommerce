@@ -1,16 +1,17 @@
-<!-- <div class="title">
-  Wishlist
+<div class="title">Wishlist</div>
+@if(wishlist$ | async ; as wishlists){
+<div class="wishlist">
+  @for (wishlist of wishlists; track wishlist.id) {
+  <div class="wishlist__item">
+    <div class="delete-wishlist">
+      <button alte-button theme="icon" (click)="deletewishlist(wishlist)">
+        <img src="./assets/icon/X.svg" />
+      </button>
+    </div>
+
+    <app-product-item [product]="wishlist.product" />
+  </div>
+
+  }
 </div>
-@for(item of wishlist; track item){
-
-<app-base
-[img]="item.img"
-[description]="item.description"
-[orderDate]="item.orderDate"
-[extraContent]="item.extraContent"
-[additionalInfo]="item.additionalInfo"
-[buttonText]="item.buttonText"
-[showBorder]="false"
-
-/>
-} -->
+}

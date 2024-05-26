@@ -3,7 +3,7 @@
   <div>
     <h2>Order Datails</h2>
     <div class="details">
-      <app-key-value  key="Order ID" [value]="order.id" />
+      <app-key-value key="Order ID" [value]="order.id" />
       <app-key-value
         key="Order Date"
         [value]="order.createdAt | date : 'dd/MM/yyyy  hh:mm'"
@@ -15,6 +15,17 @@
       />
     </div>
   </div>
+  <div>
+    <h2>Shipping address</h2>
+    <div class="order-address">
+      <app-key-value key="Country" [value]="order.shipping.country" />
+      <app-key-value key="State" [value]="order.shipping.state" />
+      <app-key-value key="City" [value]="order.shipping.city" />
+      <app-key-value key="Street" [value]="order.shipping.street" />
+      <app-key-value key="ZipCode" [value]="order.shipping.zipCode" />
+      <app-key-value key="Email" [value]="order.shipping.email" />
+    </div>
+  </div>
   <div class="order__products">
     <h2>Products</h2>
     <div class="products">
@@ -24,5 +35,4 @@
     </div>
   </div>
 </div>
-
 }

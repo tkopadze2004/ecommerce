@@ -3,16 +3,11 @@
     text-decoration: rgb(139, 139, 139) underline;
     font-size: 30px;
     font-weight: 500;
-    color: var(--neutral-black-b600);
+    color: var(--neutral-black-b700);
     margin-bottom: 30px;
   }
-  .details {
-.key-value{
-  color: red !important;
-}
-  }
   &__products {
-    margin-top: 40px;
+    margin:40px 0;
 
     .products {
       display: flex;

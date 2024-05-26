@@ -1,20 +1,12 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 0 16px;
-  margin: 0 auto;
-  max-width: 1116px;
-  //sheidzleba wavshalo height/bottom
-  height: 568px;
-  margin-bottom: 168px;
-  &__head {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.product-latest {
+margin: 70px auto 100px;
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
 
-  &__title {
+  .title {
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,73 +20,11 @@
       text-transform: uppercase;
       color: var(--neutral-black-b300);
     }
-    &--bestselling {
+    h2 {
       font-family: var(--font--family);
       font-weight: 700;
       font-size: var(--font-size-24);
       color: var(--neutral-black-b900);
-    }
-  }
-  &__products {
-    display: flex;
-    gap: 20px;
-    &--item {
-      padding-top: 80px;
-
-      &--info {
-        border-radius: 4px;
-        padding: 16px 8px;
-        width: 264px;
-        height: 434px;
-        width: 269px;
-        &--card {
-          border-radius: 4px;
-          width: 240px;
-          height: 312px;
-          background: var(--neutral-white-w100);
-        }
-
-        &--details {
-          &--description {
-            font-family: var(--font--family);
-            font-weight: 500;
-            font-size: var(--font-size--16);
-            line-height: 175%;
-            color: var(--neutral-black-b900);
-            margin-top: 25px;
-          }
-          &--bottom {
-            display: flex;
-            align-items: center;
-            margin-top: 12px;
-            gap: 16px;
-
-            &--instock {
-              border: 1px solid var(--neutral-black-b100);
-              border-radius: 100px;
-              padding: 2px 16px;
-              width: auto;
-              height: 28px;
-              &--text {
-                font-family: var(--font--family);
-                font-weight: 500;
-                font-size: var(--font-size-12);
-                line-height: 200%;
-                text-transform: capitalize;
-                color: var(--neutral-black-b900);
-              }
-              &--price {
-                font-family: var(--font--family);
-                font-weight: 400;
-                font-size: var(--font-size--14);
-                line-height: 175%;
-                text-align: center;
-                color: var(--neutral-black-b600);
-              }
-            }
-          }
-        }
-      }
     }
   }
 }

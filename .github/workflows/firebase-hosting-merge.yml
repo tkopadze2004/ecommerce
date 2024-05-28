@@ -1,5 +1,5 @@
 name: Deploy to Firebase Hosting on merge
-'on':
+on:
   push:
     branches:
       - main
@@ -8,20 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
-      - run: curl -fsS https://dotenvx.sh/ | sh
-      - run: 'echo "DOTENV_KEY_PRODUCTION=$DOTENV_KEY" > .env.keys'
-        env:
-          DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
-      - run: dotenvx vault decrypt
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ALTE_ECOMMERCE_15C99 }}'
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ALTE_ECOMMERCE_15C99}}
           channelId: live
           projectId: alte-ecommerce-15c99
-        env:
-          FIREBASE_CLI_EXPERIMENTS: webframeworks

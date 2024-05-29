@@ -37,7 +37,6 @@
   <div class="profile">
     <div class="profile__item" [routerLink]="['/profile','cart']">
 <div>      {{cartCount$ |async  | currency : 'USD' : '$'}}
-  <!-- {{ cartCountt$ | async}}  product count -->
 </div>
       <img src="/assets/icon/Cart.svg" />
     </div>

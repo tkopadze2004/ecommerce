@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { AdditionalPageComponent } from './components/additional-page/additional-page.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,10 @@ export const routes: Routes = [
       {
         path:'additionalPage',
         component:AdditionalPageComponent
+      },
+      {
+        path:'contact',
+        component: ContactComponent
       },
       {
         path: 'profile',

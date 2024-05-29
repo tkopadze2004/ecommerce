@@ -25,6 +25,7 @@ export const FOOTER_MENU = [
       },
       {
         title: 'Contact',
+        
         url: '#',
       },
       {

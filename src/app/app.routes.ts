@@ -4,8 +4,8 @@ import { LayoutComponent } from './components';
 import { HomeComponent } from './pages/home/home.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { ProductsComponent } from './pages/products/products.component';
-import { AdditionalPageComponent } from './components/additional-page/additional-page.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { AboutComponent } from './pages/about/about.component';
 
 export const routes: Routes = [
   {
@@ -29,12 +29,12 @@ export const routes: Routes = [
         component:ProductsComponent
       },
       {
-        path:'additionalPage',
-        component:AdditionalPageComponent
-      },
-      {
         path:'contact',
         component: ContactComponent
+      },
+      {
+        path:'about',
+        component: AboutComponent
       },
       {
         path: 'profile',
@@ -44,6 +44,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/additionalPage'
+    redirectTo: '/'
   }
 ];

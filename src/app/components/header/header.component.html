@@ -11,9 +11,8 @@
   <div class="nav">
     <ul>
       <li><a [routerLink]="['/']">Home</a></li>
-      <li><a [cdkMenuTriggerFor]="menu">Categories</a></li>
       <li>
-        <a [routerLink]="['/about']">About</a>
+        <a [cdkMenuTriggerFor]="menu">Categories</a>
         <ng-template #menu>
           <div class="menu">
             <ul>
@@ -31,13 +30,15 @@
           </div>
         </ng-template>
       </li>
+      <li>
+        <a [routerLink]="['/about']">About</a>
+      </li>
       <li><a [routerLink]="['/contact']">Contact</a></li>
     </ul>
   </div>
   <div class="profile">
-    <div class="profile__item" [routerLink]="['/profile','cart']">
-<div>      {{cartCount$ |async  | currency : 'USD' : '$'}}
-</div>
+    <div class="profile__item" [routerLink]="['/profile', 'cart']">
+      <div>{{ cartCount$ | async | currency : "USD" : "$" }}</div>
       <img src="/assets/icon/Cart.svg" />
     </div>
 

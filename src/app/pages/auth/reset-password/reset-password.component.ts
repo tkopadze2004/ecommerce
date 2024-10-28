@@ -47,13 +47,11 @@ export class ResetPasswordComponent implements OnDestroy {
   router = inject(Router);
 
   ngOnInit(): void {
-    console.log('dsdsdssd');
     this.errorMessage = null;
     this.successMessagge = null;
     this.ActivatedRoute.queryParams
       .pipe(takeUntil(this.sub$))
       .subscribe((params) => {
-        console.log(params);
 
         if (params['oobCode']) {
           this.form.patchValue({ oobCode: params['oobCode'] });

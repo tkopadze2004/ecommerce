@@ -72,7 +72,6 @@ export class LoginComponent implements OnDestroy {
         })
       )
       .subscribe((res) => {
-        console.log(res);
         if (res) {
           this.successMessagge = 'login successful';
           setTimeout(() => {

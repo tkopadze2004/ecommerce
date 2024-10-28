@@ -43,7 +43,6 @@ export class PasswordComponent implements OnDestroy {
   submit() {
     this.form.markAllAsTouched();
     console.log('hi');
-
     if (this.form.invalid) {
       return;
     }

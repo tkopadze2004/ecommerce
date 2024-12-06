@@ -1,13 +1,11 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { AuthHeadComponent } from '../auth-head/auth-head.component';
-// import { InputComponent } from '../../../input/input.component';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
 import { ButtonComponent } from '../../../ui/button/button.component';
 import { Router, RouterLink } from '@angular/router';
 import { InputComponent } from '../../../input/input.component';
@@ -23,7 +21,6 @@ import { Subject, catchError, takeUntil, throwError } from 'rxjs';
     AuthHeadComponent,
     InputComponent,
     ReactiveFormsModule,
-    JsonPipe,
     ButtonComponent,
     RouterLink,
     AlertComponent,
@@ -75,7 +72,7 @@ export class LoginComponent implements OnDestroy {
         if (res) {
           this.successMessagge = 'login successful';
           setTimeout(() => {
-            this.router.navigate(['/']);
+            this.router.navigate(['/profile']);
           }, 2000);
         }
       });

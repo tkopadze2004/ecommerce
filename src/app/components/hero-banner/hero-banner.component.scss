@@ -1,6 +1,18 @@
-:host{
+:host {
   display: block;
   width: 100%;
-  height: 440px;
   background: var(--neutral-white-w100);
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 440px;
+  }
 }

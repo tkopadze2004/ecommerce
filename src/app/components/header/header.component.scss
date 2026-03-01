@@ -17,17 +17,24 @@
 
 header {
   padding: 0 16px;
-  width: 1116px;
   height: 84px;
   background: var(--neutral-white-w900);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 100;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .profile {
   display: flex;
-  // align-items: center;
+  align-items: center;
   gap: 12px;
 
   img {
@@ -39,6 +46,7 @@ header {
   &__item {
     cursor: pointer;
     display: flex;
+    align-items: center;
     gap: 10px;
 
     text-decoration: none;
@@ -58,6 +66,8 @@ header {
     display: flex;
     gap: 29px;
     list-style: none;
+    margin: 0;
+    padding: 0;
 
     li {
       cursor: pointer;
@@ -75,6 +85,7 @@ header {
     }
   }
 }
+
 .menu {
   border: 1px solid var(--neutral-white-w200);
   border-radius: 8px;
@@ -97,5 +108,93 @@ header {
         color: var(--neutral-white-w900);
       }
     }
+  }
+}
+
+// Hamburger — hidden on desktop
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--neutral-black-b900);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  &.active {
+    span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+}
+
+// Overlay behind mobile menu
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 98;
+}
+
+// ── Tablet (≤ 1024px) ──────────────────────────────────────────────
+@media (max-width: 1024px) {
+  .nav ul {
+    gap: 16px;
+  }
+}
+
+// ── Mobile (≤ 768px) ───────────────────────────────────────────────
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 260px;
+    height: 100dvh;
+    background: var(--neutral-white-w900);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    padding: 100px 24px 32px;
+    transition: right 0.3s ease;
+
+    &.open {
+      right: 0;
+    }
+
+    ul {
+      flex-direction: column;
+      gap: 24px;
+
+      li a {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// ── Small mobile (≤ 480px) ─────────────────────────────────────────
+@media (max-width: 480px) {
+  header {
+    height: 64px;
+  }
+
+  .profile__item div {
+    display: none;
   }
 }

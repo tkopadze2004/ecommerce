@@ -1,8 +1,7 @@
 :host {
-  height: 443px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
+  padding: 48px 0;
+  background: var(--neutral-white-w100);
 
   .delivery {
     img {
@@ -21,8 +20,8 @@
   .feature {
     display: flex;
     justify-content: space-between;
-    margin-top: 88px;
-    gap: 54px;
+    gap: 40px;
+    flex-wrap: wrap;
 
     &__title {
       font-family: var(--font--family);
@@ -32,7 +31,6 @@
     }
 
     &__left {
-      margin-right: 56px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -45,5 +43,22 @@
         color: var(--neutral-black-b500);
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  :host .feature {
+    gap: 32px;
+
+    &__left {
+      min-width: calc(50% - 16px);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  :host .feature {
+    flex-direction: column;
+    gap: 24px;
   }
 }

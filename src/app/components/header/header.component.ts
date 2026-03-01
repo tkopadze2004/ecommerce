@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { RouterLink } from '@angular/router';
 import { AuthFacade } from '../../facades';
-import { CdkMenuTrigger } from '@angular/cdk/menu';
+import { CdkMenu, CdkMenuTrigger } from '@angular/cdk/menu';
 import { CategoryFacade } from '../../facades/category.facade';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { CartFacade } from '../../facades/cart.facade';
@@ -11,7 +11,7 @@ import { map } from 'rxjs';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ButtonComponent,CurrencyPipe, RouterLink, CdkMenuTrigger, AsyncPipe],
+  imports: [ButtonComponent, CurrencyPipe, RouterLink, CdkMenuTrigger, CdkMenu, AsyncPipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

@@ -1,8 +1,8 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, Optional, Self } from '@angular/core';
 import {
   ControlValueAccessor,
   FormsModule,
-  NG_VALUE_ACCESSOR,
+  NgControl,
 } from '@angular/forms';
 
 let uniqId = 1;
@@ -10,13 +10,6 @@ let uniqId = 1;
   selector: 'app-input',
   standalone: true,
   imports: [FormsModule],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputComponent),
-      multi: true,
-    },
-  ],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
 })
@@ -24,11 +17,22 @@ export class InputComponent implements ControlValueAccessor {
   @Input() type: 'text' | 'password' | 'number' | 'email' = 'text';
   @Input() placeholder = '';
   @Input() label = '';
+  @Input() error = '';
 
   value: string = '';
   disabled: boolean = false;
   onchange = (value: string): void => {};
   ontouched = () => {};
+
+  constructor(@Optional() @Self() public ngControl: NgControl) {
+    if (ngControl) {
+      ngControl.valueAccessor = this;
+    }
+  }
+
+  get isInvalid(): boolean {
+    return !!(this.ngControl?.invalid && this.ngControl?.touched);
+  }
 
   get inputId() {
     return `input-${uniqId++}`;
@@ -36,19 +40,15 @@ export class InputComponent implements ControlValueAccessor {
 
   writeValue(value: any): void {
     this.value = value;
-    //  console.log('wrtie', value);
   }
   registerOnChange(fn: any): void {
     this.onchange = fn;
-    // console.log('regitser');
   }
 
   registerOnTouched(fn: any): void {
     this.ontouched = fn;
-    // console.log('tavhed');
   }
   setDisabledState(Disabled: boolean): void {
     this.disabled = Disabled;
-    // console.log('doisans');
   }
 }

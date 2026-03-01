@@ -25,6 +25,10 @@
       border: 1px solid var(--neutral-black-b200);
     }
 
+    &.invalid {
+      border: 1px solid var(--semantic-red-r900);
+    }
+
     &::placeholder {
       font-family: var(--font--family);
       font-weight: 500;
@@ -37,9 +41,7 @@
   }
   .error {
     color: var(--semantic-red-r900);
-
+    font-size: var(--font--size--14);
+    margin-top: 4px;
   }
-  // input.ng-invalid.ng-touched input {
-  //   border: 1px solid var(--semantic-red-r900);
-  // }
 }

@@ -14,7 +14,7 @@
       <li>
         <a [cdkMenuTriggerFor]="menu">Categories</a>
         <ng-template #menu>
-          <div class="menu">
+          <div cdkMenu class="menu">
             <ul>
               @for(category of categories$ | async ;track category.id){
               <li

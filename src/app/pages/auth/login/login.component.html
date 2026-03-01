@@ -8,12 +8,17 @@
   }
   <form [formGroup]="form">
     <app-input
-      error="email is required"
+      error="Email is required"
       formControlName="email"
       type="email"
       label="Email"
     />
-    <app-input formControlName="password" type="password" label="Password" />
+    <app-input
+      error="Password is required"
+      formControlName="password"
+      type="password"
+      label="Password"
+    />
     <div class="recovery">
       <a [routerLink]="['/auth/recovery']">Forgot Password?</a>
     </div>

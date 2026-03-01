@@ -7,6 +7,9 @@
     (input)="onchange(value)"
     [placeholder]="placeholder"
     (blur)="ontouched()"
-    
+    [class.invalid]="isInvalid"
   />
+  @if(isInvalid && error){
+    <span class="error">{{ error }}</span>
+  }
 </div>

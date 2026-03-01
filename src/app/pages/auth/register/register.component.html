@@ -7,10 +7,20 @@
     @if(successMessagge){
     <app-alert type="success" [message]="successMessagge" />
     }
-  <div [formGroup]="form">
-    <app-input formControlName="email" type="email" label="Email" />
+  <form [formGroup]="form">
+    <app-input
+      error="Email is required"
+      formControlName="email"
+      type="email"
+      label="Email"
+    />
 
-    <app-input formControlName="password" type="password" label="Password" />
+    <app-input
+      error="Password is required"
+      formControlName="password"
+      type="password"
+      label="Password"
+    />
 
     <div class="Privacy">
       By creating an account you agree with our Terms of Service, Privacy
@@ -19,7 +29,7 @@
     <div class="auth-button">
       <button alte-button block (click)="onSubmit()">Sign Up</button>
     </div>
-  </div>
+  </form>
 
   <div class="more-actions">
     Already have an account?<a [routerLink]="['/auth']"> Log in</a>
